@@ -497,7 +497,7 @@
   };
 
   // 执行导入
-  function executeImport(rows, repeatMode) {
+  async function executeImport(rows, repeatMode) {
     const existCodes = new Set(productList.map(p => p.product_code));
     const result = batchParseExcel(rows, existCodes, repeatMode);
     
