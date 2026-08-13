@@ -1,1 +1,307 @@
-{}
+{
+  "SEB602": {
+    "price": 15881.0,
+    "date": "2026-08-13",
+    "underlying": "白银期货（交易代码：AG2702）"
+  },
+  "SCS929": {
+    "price": 925.6,
+    "date": "2026-08-06",
+    "underlying": "SGE黄金9999（交易代码：AU9999.SGE）"
+  },
+  "SCG300": {
+    "price": 904.92,
+    "date": "2026-08-05",
+    "underlying": "黄金AU9999"
+  },
+  "SBUD00": {
+    "price": 7698.048,
+    "date": "2026-08-11",
+    "underlying": "中证1000"
+  },
+  "SBPG46": {
+    "price": 895.67,
+    "date": "2026-07-23",
+    "underlying": "黄金AU9999"
+  },
+  "SB8784": {
+    "price": 152720.0,
+    "date": "2026-07-13",
+    "underlying": "碳酸锂期货"
+  },
+  "SB8911": {
+    "price": 7631.762,
+    "date": "2026-07-16",
+    "underlying": "中证1000"
+  },
+  "SB5856": {
+    "price": 103080.0,
+    "date": "2026-07-17",
+    "underlying": "沪铜期货"
+  },
+  "SB3946": {
+    "price": 7167.996,
+    "date": "2026-07-17",
+    "underlying": "中证1000"
+  },
+  "SB1389": {
+    "price": 877.99,
+    "date": "2026-07-15",
+    "underlying": "黄金AU9999"
+  },
+  "SANX68": {
+    "price": 894.39,
+    "date": "2026-06-24",
+    "underlying": "黄金AU9999"
+  },
+  "SAMX00": {
+    "price": 8680.039,
+    "date": "2026-06-23",
+    "underlying": "中证1000"
+  },
+  "SALA52": {
+    "price": 894.39,
+    "date": "2026-06-24",
+    "underlying": "黄金AU9999"
+  },
+  "SAHE93": {
+    "price": 18068.0,
+    "date": "2026-06-03",
+    "underlying": "沪银期货（AG2612.SHF）"
+  },
+  "SAHE46": {
+    "price": 915.63,
+    "date": "2026-06-10",
+    "underlying": "黄金AU9999"
+  },
+  "SAGJ97": {
+    "price": 8432.679,
+    "date": "2026-06-03",
+    "underlying": "中证1000"
+  },
+  "SAES00": {
+    "price": 972.8,
+    "date": "2026-06-03",
+    "underlying": "黄金AU9999"
+  },
+  "SAAL56": {
+    "price": 961.82,
+    "date": "2026-05-28",
+    "underlying": "黄金AU9999"
+  },
+  "SAAQ54": {
+    "price": 8692.666,
+    "date": "2026-05-22",
+    "underlying": "中证1000"
+  },
+  "SBWG63": {
+    "price": 1028.68,
+    "date": "2026-05-14",
+    "underlying": "黄金AU9999"
+  },
+  "SBWE81": {
+    "price": 1028.51,
+    "date": "2026-05-12",
+    "underlying": "黄金AU9999"
+  },
+  "SBWA41": {
+    "price": 1026.94,
+    "date": "2026-05-06",
+    "underlying": "黄金AU9999"
+  },
+  "SBVF58": {
+    "price": 1037.21,
+    "date": "2026-04-27",
+    "underlying": "黄金AU9999"
+  },
+  "SBVF55": {
+    "price": 1037.21,
+    "date": "2026-04-27",
+    "underlying": "黄金AU9999"
+  },
+  "SBUR60": {
+    "price": 1037.5,
+    "date": "2026-04-23",
+    "underlying": "黄金AU9999"
+  },
+  "SBUD42": {
+    "price": 8106.165,
+    "date": "2026-04-15",
+    "underlying": "中证1000"
+  },
+  "SBUD41": {
+    "price": 8307.436,
+    "date": "2026-04-17",
+    "underlying": "中证1000"
+  },
+  "SBRY82": {
+    "price": 8335.908,
+    "date": "2026-03-12",
+    "underlying": "中证1000"
+  },
+  "SBRJ01": {
+    "price": 8335.908,
+    "date": "2026-03-12",
+    "underlying": "中证1000"
+  },
+  "SBPY11": {
+    "price": 8239.513,
+    "date": "2026-02-11",
+    "underlying": "中证1000"
+  },
+  "SBNF98": {
+    "price": 8240.775,
+    "date": "2026-01-15",
+    "underlying": "中证1000"
+  },
+  "SBNA67": {
+    "price": 8365.435,
+    "date": "2026-01-26",
+    "underlying": "中证1000"
+  },
+  "SBMW13": {
+    "price": 8232.729,
+    "date": "2026-01-16",
+    "underlying": "中证1000"
+  },
+  "SBMW17": {
+    "price": 8240.775,
+    "date": "2026-01-15",
+    "underlying": "中证1000"
+  },
+  "SBMV58": {
+    "price": 1184.96,
+    "date": "2026-01-28",
+    "underlying": "黄金AU9999"
+  },
+  "SBHN43": {
+    "price": 7464.863,
+    "date": "2025-11-05",
+    "underlying": "中证1000"
+  },
+  "SBGN18": {
+    "price": 7142.954,
+    "date": "2025-10-23",
+    "underlying": "中证500"
+  },
+  "SBGN19": {
+    "price": 7142.954,
+    "date": "2025-10-23",
+    "underlying": "中证500"
+  },
+  "SBGN16": {
+    "price": 7128.478,
+    "date": "2025-10-22",
+    "underlying": "中证500"
+  },
+  "SBGN14": {
+    "price": 7128.478,
+    "date": "2025-10-22",
+    "underlying": "中证500"
+  },
+  "SBGK53": {
+    "price": 7479.221,
+    "date": "2025-10-28",
+    "underlying": "中证1000"
+  },
+  "SBCK35": {
+    "price": 7476.467,
+    "date": "2025-08-26",
+    "underlying": "中证1000"
+  },
+  "SBCK30": {
+    "price": 775.05,
+    "date": "2025-08-14",
+    "underlying": "黄金"
+  },
+  "SBBL03": {
+    "price": 771.8,
+    "date": "2025-07-28",
+    "underlying": "黄金"
+  },
+  "SBBH11": {
+    "price": 775.34,
+    "date": "2025-07-24",
+    "underlying": "黄金"
+  },
+  "SBAV22": {
+    "price": 6612.259,
+    "date": "2025-07-21",
+    "underlying": "中证1000"
+  },
+  "SBAP59": {
+    "price": 6462.063,
+    "date": "2025-07-16",
+    "underlying": "中证1000"
+  },
+  "SBAJ46": {
+    "price": 777.4,
+    "date": "2025-07-14",
+    "underlying": "黄金AU9999"
+  },
+  "SBAF94": {
+    "price": 772.4,
+    "date": "2025-07-16",
+    "underlying": "黄金"
+  },
+  "SBAF96": {
+    "price": 772.4,
+    "date": "2025-07-16",
+    "underlying": "黄金"
+  },
+  "SBAF86": {
+    "price": 6461.1,
+    "date": "2025-07-11",
+    "underlying": "中证1000"
+  },
+  "SBAF87": {
+    "price": 6461.1,
+    "date": "2025-07-11",
+    "underlying": "中证1000"
+  },
+  "SAZY47": {
+    "price": 772.4,
+    "date": "2025-07-16",
+    "underlying": "黄金"
+  },
+  "SAYN79": {
+    "price": 768.87,
+    "date": "2025-06-24",
+    "underlying": "黄金"
+  },
+  "SAZP20": {
+    "price": 777.4,
+    "date": "2025-06-20",
+    "underlying": "黄金AU9999"
+  },
+  "SAYV16": {
+    "price": 772.3,
+    "date": "2025-06-09",
+    "underlying": "黄金AU9999"
+  },
+  "SAYN77": {
+    "price": 792.07,
+    "date": "2025-06-13",
+    "underlying": "黄金"
+  },
+  "SAYN76": {
+    "price": 792.07,
+    "date": "2025-06-13",
+    "underlying": "黄金"
+  },
+  "SAWT19": {
+    "price": 6070.037,
+    "date": "2025-06-03",
+    "underlying": "中证1000"
+  },
+  "SAWT16": {
+    "price": 6095.337,
+    "date": "2025-05-19",
+    "underlying": "中证1000"
+  },
+  "SAVQ69": {
+    "price": 5914.029,
+    "date": "2025-04-15",
+    "underlying": "中证1000"
+  }
+}
