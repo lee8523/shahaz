@@ -300,9 +300,8 @@ def main():
     # 刷新当前价格（每日执行）
     refresh_current_prices(products_data)
     
-    # 刷新期初价格（手动触发时执行）
-    # 如需执行，取消下面注释
-    # refresh_initial_prices(products_data)
+    # 刷新期初价格（手动触发时自动跳过已有数据的产品）
+    refresh_initial_prices(products_data)
     
     print("\n完成!")
 
