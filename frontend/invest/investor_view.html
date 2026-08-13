@@ -32,41 +32,69 @@
   const urlParams = new URLSearchParams(window.location.search);
   const productCode = urlParams.get('code');
   
-  // 从 localStorage 加载产品数据
+  let productsData = { products: [], underlyings: {} };
+  let prices = {};
+  let initialPrices = {};
   let product = {};
-  if (productCode) {
-    const stored = localStorage.getItem('investor_product_' + productCode);
-    if (stored) {
-      product = JSON.parse(stored);
-    } else {
-      document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">未找到产品数据，请从管理后台生成链接</p>';
-    }
-  } else {
-    document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">缺少产品参数</p>';
-  }
   
   const today = new Date().toISOString().split('T')[0];
 
-  // 标的名称 → prices.json key 映射
-  const UNDERLYING_MAP = {
-    '黄金': 'AU9999',
-    '中证1000': '000852',
-    '中证500': '000905',
-    '沪深300': '000300'
-  };
+  // 获取标的akshare代码
+  function getUnderlyingCode(name) {
+    if (productsData.underlyings[name]?.code) return productsData.underlyings[name].code;
+    return null;
+  }
 
-  async function loadLatestPrice(prod) {
+  // 加载数据
+  async function loadData() {
     try {
-      const resp = await fetch('../../backend/prices.json?t=' + Date.now());
-      if (!resp.ok) return;
-      const prices = await resp.json();
-      const key = UNDERLYING_MAP[prod.underlying];
-      if (key && prices[key] && prices[key].price) {
-        prod.underlying_price = prices[key].price;
+      // 加载产品数据
+      const prodResp = await fetch('../../backend/products.json?t=' + Date.now());
+      if (prodResp.ok) {
+        productsData = await prodResp.json();
+      }
+
+      // 加载当前价格
+      const priceResp = await fetch('../../backend/prices.json?t=' + Date.now());
+      if (priceResp.ok) {
+        prices = await priceResp.json();
+      }
+
+      // 加载期初价格
+      const initResp = await fetch('../../backend/initial_prices.json?t=' + Date.now());
+      if (initResp.ok) {
+        initialPrices = await initResp.json();
+      }
+
+      // 查找当前产品
+      if (productCode) {
+        product = productsData.products.find(p => p.product_code === productCode) || {};
+        
+        if (!product.product_code) {
+          document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">未找到产品数据</p>';
+          return false;
+        }
+
+        // 更新当前价格
+        const code = getUnderlyingCode(product.underlying);
+        if (code && prices[code]?.price) {
+          product.underlying_price = prices[code].price;
+        }
+
+        // 更新期初价格
+        if (initialPrices[product.product_code]?.price) {
+          product.initial_price = initialPrices[product.product_code].price;
+        }
+      } else {
+        document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">缺少产品参数</p>';
+        return false;
       }
     } catch(e) {
-      console.warn('加载行情失败:', e);
+      console.warn('加载数据失败:', e);
+      document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">加载数据失败</p>';
+      return false;
     }
+    return true;
   }
 
   function renderInvestorPage(prod) {
@@ -119,9 +147,10 @@
     card.innerHTML = html;
   }
 
-  // 页面初始化：加载行情后渲染
-  if (product.product_code) {
-    loadLatestPrice(product).then(() => renderInvestorPage(product));
+  // 页面初始化
+  const loaded = await loadData();
+  if (loaded && product.product_code) {
+    renderInvestorPage(product);
   }
 </script>
 </body>

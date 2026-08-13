@@ -1,0 +1,9 @@
+{
+  "products": [],
+  "underlyings": {
+    "黄金": {"code": "AU9999", "market": "sge"},
+    "中证1000": {"code": "000852", "market": "cn_index"},
+    "中证500": {"code": "000905", "market": "cn_index"},
+    "沪深300": {"code": "000300", "market": "cn_index"}
+  }
+}

@@ -114,6 +114,8 @@
     <div>
       <button class="btn btn-primary" id="importBtn">Excel批量导入</button>
       <button class="btn" id="exportBtn" style="background:#f0f2f5;margin-left:8px">导出备份</button>
+      <input type="password" id="githubToken" placeholder="GitHub PAT" style="width:180px;margin-left:16px;padding:6px 10px;border:1px solid #d9d9d9;border-radius:4px">
+      <button class="btn" id="saveToken" style="background:#f0f2f5;margin-left:8px">保存Token</button>
     </div>
   </div>
 
@@ -298,48 +300,136 @@
     formatUnderlying,
     formatProductName
   } from "../../backend/common.util.js";
-  import { TYPE_LABEL } from "../../backend/constant.js";
+  import { TYPE_LABEL, BUILTIN_UNDERLYING_CODES } from "../../backend/constant.js";
   import { batchParseExcel } from "../../backend/excel.parser.js";
-  import { INITIAL_PRODUCT_LIST } from "../../backend/product-data.js";
 
-  // 全局产品数组：优先读 localStorage，无缓存则用初始模板
-  const STORAGE_KEY = 'product_list_cache';
-  let productList = (() => {
-    const cached = localStorage.getItem(STORAGE_KEY);
-    if (cached) {
-      try { return JSON.parse(cached); } catch(e) {}
-    }
-    return [...INITIAL_PRODUCT_LIST];
-  })();
+  // 全局产品数据
+  let productList = [];
+  let productsData = { products: [], underlyings: {} }; // 完整JSON数据
+  let productsSha = ''; // 用于GitHub API更新
   const today = new Date().toISOString().split('T')[0];
   let pendingRows = []; // 暂存待处理的Excel行
 
-  // 自动落存储
-  function saveToStorage() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(productList));
+  // ========== GitHub Token 配置 ==========
+  const GITHUB_REPO = 'lee8523/shahaz';
+  document.getElementById('githubToken').value = localStorage.getItem('github_token') || '';
+  document.getElementById('saveToken').onclick = () => {
+    localStorage.setItem('github_token', document.getElementById('githubToken').value);
+    alert('Token已保存');
+  };
+
+  // ========== 数据加载与保存 ==========
+  async function loadProducts() {
+    try {
+      const resp = await fetch('../../backend/products.json?t=' + Date.now());
+      if (resp.ok) {
+        productsData = await resp.json();
+        productList = productsData.products || [];
+      }
+    } catch(e) {
+      console.warn('加载products.json失败:', e);
+    }
+  }
+
+  async function saveToServer() {
+    const token = localStorage.getItem('github_token');
+    if (!token) {
+      alert('请先保存GitHub Token');
+      return false;
+    }
+    
+    productsData.products = productList;
+    
+    try {
+      // 获取当前文件sha
+      const metaResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/backend/products.json`, {
+        headers: { 'Authorization': `token ${token}` }
+      });
+      if (metaResp.ok) {
+        const meta = await metaResp.json();
+        productsSha = meta.sha;
+      }
+      
+      // 提交更新
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(productsData, null, 2))));
+      const body = {
+        message: 'update products data',
+        content,
+        sha: productsSha
+      };
+      
+      const resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/backend/products.json`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      
+      if (resp.ok) {
+        const result = await resp.json();
+        productsSha = result.content.sha;
+        return true;
+      } else {
+        const err = await resp.json();
+        alert('保存失败: ' + (err.message || '未知错误'));
+        return false;
+      }
+    } catch(e) {
+      alert('保存失败: ' + e.message);
+      return false;
+    }
+  }
+
+  // 初始化加载
+  await loadProducts();
+
+  // ========== 标的配置 ==========
+  // 获取标的akshare代码（优先级：用户配置 > 内置映射）
+  function getUnderlyingCode(name) {
+    if (productsData.underlyings[name]?.code) return productsData.underlyings[name].code;
+    if (BUILTIN_UNDERLYING_CODES[name]) return BUILTIN_UNDERLYING_CODES[name];
+    return null;
+  }
+
+  // 提取并配置标的
+  async function extractAndConfigureUnderlyings() {
+    // 提取所有唯一标的名称
+    const underlyingNames = [...new Set(productList.map(p => p.underlying).filter(Boolean))];
+    
+    // 找出未配置的标的
+    const unconfigured = underlyingNames.filter(name => !getUnderlyingCode(name));
+    
+    if (unconfigured.length === 0) return true;
+    
+    // 弹窗让用户填写
+    let configStr = '以下标的需要配置akshare代码，请逐个输入（取消则跳过）：\n\n';
+    for (const name of unconfigured) {
+      const code = prompt(`标的"${name}"的akshare代码：`, '');
+      if (code === null) return false; // 用户取消
+      if (code.trim()) {
+        productsData.underlyings[name] = { code: code.trim() };
+      }
+    }
+    
+    // 保存配置
+    await saveToServer();
+    return true;
   }
 
   // ========== 加载最新行情 ==========
-  // 标的名称 → prices.json key 映射
-  const UNDERLYING_MAP = {
-    '黄金': 'AU9999',
-    '中证1000': '000852',
-    '中证500': '000905',
-    '沪深300': '000300'
-  };
-
   async function loadLatestPrices() {
     try {
       const resp = await fetch('../../backend/prices.json?t=' + Date.now());
       if (!resp.ok) return;
       const prices = await resp.json();
       productList.forEach(prod => {
-        const key = UNDERLYING_MAP[prod.underlying];
+        const key = getUnderlyingCode(prod.underlying);
         if (key && prices[key] && prices[key].price) {
           prod.underlying_price = prices[key].price;
         }
       });
-      saveToStorage();
     } catch(e) {
       console.warn('加载行情失败:', e);
     }
@@ -441,9 +531,10 @@
     
     document.getElementById('resultModal').style.display = 'flex';
     
-    // 刷新表格 + 落存储
+    // 提取并配置标的，然后保存
+    await extractAndConfigureUnderlyings();
     renderTable();
-    saveToStorage();
+    await saveToServer();
   }
 
   // 结果弹窗关闭
@@ -453,15 +544,14 @@
 
   // 导出备份按钮
   document.getElementById('exportBtn').onclick = () => {
-    const content = `// 产品数据备份（导出时间：${new Date().toLocaleString('zh-CN')}）\nexport const INITIAL_PRODUCT_LIST = ${JSON.stringify(productList, null, 2)};\n`;
-    const blob = new Blob([content], { type: 'text/javascript' });
+    const content = JSON.stringify(productsData, null, 2);
+    const blob = new Blob([content], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'product-data.js';
+    a.download = 'products.json';
     a.click();
     URL.revokeObjectURL(url);
-    alert('备份文件已下载，可覆盖 backend/product-data.js');
   };
 
   // 渲染表格
