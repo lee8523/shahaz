@@ -129,8 +129,8 @@
         <th>到期日</th>
         <th>期初观察日</th>
         <th>期末观察日</th>
-        <th>当日估算年化</th>
-        <th>最终计提年化</th>
+        <th>估算基准</th>
+        <th>最终基准</th>
         <th>产品状态</th>
         <th>操作</th>
       </tr>
@@ -269,11 +269,11 @@
     <div class="block-title">收益台账（仅年化）</div>
     <div class="form-row" id="estRow">
       <div class="form-item">
-        <label>当日动态估算年化</label>
+        <label>估算基准</label>
         <input type="text" id="inp_est" readonly>
       </div>
       <div class="form-item">
-        <label>最终锁定计提年化</label>
+        <label>最终基准</label>
         <input type="text" id="inp_final" readonly>
       </div>
       <div class="form-item">
@@ -294,11 +294,13 @@
     getProductStatusInfo,
     formatPercentShow,
     formatPriceShow,
-    getEstimatedDisplay
-  } from "../../backend/common.util.js";
-  import { TYPE_LABEL } from "../../backend/constant.js";
-  import { batchParseExcel } from "../../backend/excel.parser.js";
-  import { INITIAL_PRODUCT_LIST } from "../../backend/product-data.js";
+    getEstimatedDisplay,
+    formatUnderlying,
+    formatProductName
+  } from "../backend/common.util.js";
+  import { TYPE_LABEL } from "../backend/constant.js";
+  import { batchParseExcel } from "../backend/excel.parser.js";
+  import { INITIAL_PRODUCT_LIST } from "../backend/product-data.js";
 
   // 全局产品数组：优先读 localStorage，无缓存则用初始模板
   const STORAGE_KEY = 'product_list_cache';
@@ -471,9 +473,9 @@
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${prod.product_code}</td>
-        <td>${prod.product_name}</td>
+        <td>${formatProductName(prod.product_name)}</td>
         <td>${TYPE_LABEL[prod.product_type] || '--'}</td>
-        <td>${prod.underlying}</td>
+        <td>${formatUnderlying(prod.underlying)}</td>
         <td>${formatPriceShow(prod.underlying_price)}</td>
         <td>${prod.establish_date || '--'}</td>
         <td>${prod.contract_maturity_date || '--'}</td>

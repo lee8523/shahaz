@@ -22,7 +22,9 @@
     getProductStatusInfo,
     formatPercentShow,
     formatPriceShow,
-    getEstimatedDisplay
+    getEstimatedDisplay,
+    formatUnderlying,
+    formatProductName
   } from "../../backend/common.util.js";
   import { TYPE_LABEL } from "../../backend/constant.js";
 
@@ -74,9 +76,9 @@
       <div class="section">
         <h3>一、产品基础概况</h3>
         <div class="row"><span class="label">产品代码：</span>${prod.product_code || '--'}</div>
-        <div class="row"><span class="label">产品名称：</span>${prod.product_name || '--'}</div>
+        <div class="row"><span class="label">产品名称：</span>${formatProductName(prod.product_name)}</div>
         <div class="row"><span class="label">结构类型：</span>${TYPE_LABEL[prod.product_type] || '--'}</div>
-        <div class="row"><span class="label">挂钩标的：</span>${prod.underlying || '--'}</div>
+        <div class="row"><span class="label">挂钩标的：</span>${formatUnderlying(prod.underlying)}</div>
         <div class="row"><span class="label">标的最新现价：</span>${formatPriceShow(prod.underlying_price)}</div>
         <div class="row"><span class="label">产品当前状态：</span><span class="${statusInfo.className}">${statusInfo.text}</span></div>
       </div>
@@ -107,10 +109,10 @@
         <h3>四、年化收益台账</h3>
     `;
     if (prod.product_type !== 'three_element') {
-      html += `<div class="row"><span class="label">当日动态估算年化：</span>${getEstimatedDisplay(prod)}</div>`;
+      html += `<div class="row"><span class="label">估算基准：</span>${getEstimatedDisplay(prod)}</div>`;
     }
     html += `
-        <div class="row"><span class="label">最终锁定计提年化：</span>${formatPercentShow(prod.performance_base)}</div>
+        <div class="row"><span class="label">最终基准：</span>${formatPercentShow(prod.performance_base)}</div>
       </div>
     `;
 

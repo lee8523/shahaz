@@ -1,4 +1,20 @@
-import { PRODUCT_STATUS } from "./constant.js";
+import { PRODUCT_STATUS, UNDERLYING_FORMAT } from "./constant.js";
+
+/**
+ * 标的名称格式化
+ */
+export function formatUnderlying(name) {
+  if (!name) return "--";
+  return UNDERLYING_FORMAT[name] || name;
+}
+
+/**
+ * 产品名称格式化（去除"华夏资本"）
+ */
+export function formatProductName(name) {
+  if (!name) return "--";
+  return name.replace(/^华夏资本/, "");
+}
 
 /**
  * 空值过滤：/ 空字符串 undefined null 统一返回null
