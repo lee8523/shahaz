@@ -297,10 +297,10 @@
     getEstimatedDisplay,
     formatUnderlying,
     formatProductName
-  } from "../backend/common.util.js";
-  import { TYPE_LABEL } from "../backend/constant.js";
-  import { batchParseExcel } from "../backend/excel.parser.js";
-  import { INITIAL_PRODUCT_LIST } from "../backend/product-data.js";
+  } from "../../backend/common.util.js";
+  import { TYPE_LABEL } from "../../backend/constant.js";
+  import { batchParseExcel } from "../../backend/excel.parser.js";
+  import { INITIAL_PRODUCT_LIST } from "../../backend/product-data.js";
 
   // 全局产品数组：优先读 localStorage，无缓存则用初始模板
   const STORAGE_KEY = 'product_list_cache';
