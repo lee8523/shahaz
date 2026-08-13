@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>产品信息公示（投资人查看）</title>
+  <link rel="stylesheet" href="investor.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>场外挂钩结构化产品详情公示</h1>
+  <div id="productCard" class="card">
+    <!-- JS填充数据 -->
+  </div>
+
+  <div class="risk-tip">
+    风险提示：当日估算年化收益仅为模型理论测算值，不构成任何收益承诺；最终兑付结果以产品合同约定及托管机构清算为准。
+  </div>
+</div>
+
+<script type="module">
+  import {
+    getProductStatusInfo,
+    formatPercentShow,
+    formatPriceShow,
+    getEstimatedDisplay
+  } from "../../backend/common.util.js";
+  import { TYPE_LABEL } from "../../backend/constant.js";
+
+  // 从 URL 读取 product_code 参数
+  const urlParams = new URLSearchParams(window.location.search);
+  const productCode = urlParams.get('code');
+  
+  // 从 localStorage 加载产品数据
+  let product = {};
+  if (productCode) {
+    const stored = localStorage.getItem('investor_product_' + productCode);
+    if (stored) {
+      product = JSON.parse(stored);
+    } else {
+      document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">未找到产品数据，请从管理后台生成链接</p>';
+    }
+  } else {
+    document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">缺少产品参数</p>';
+  }
+  
+  const today = new Date().toISOString().split('T')[0];
+
+  // 标的名称 → prices.json key 映射
+  const UNDERLYING_MAP = {
+    '黄金': 'AU9999',
+    '中证1000': '000852',
+    '中证500': '000905',
+    '沪深300': '000300'
+  };
+
+  async function loadLatestPrice(prod) {
+    try {
+      const resp = await fetch('../../backend/prices.json?t=' + Date.now());
+      if (!resp.ok) return;
+      const prices = await resp.json();
+      const key = UNDERLYING_MAP[prod.underlying];
+      if (key && prices[key] && prices[key].price) {
+        prod.underlying_price = prices[key].price;
+      }
+    } catch(e) {
+      console.warn('加载行情失败:', e);
+    }
+  }
+
+  function renderInvestorPage(prod) {
+    const statusInfo = getProductStatusInfo(prod, today);
+    const card = document.getElementById('productCard');
+    let html = `
+      <div class="section">
+        <h3>一、产品基础概况</h3>
+        <div class="row"><span class="label">产品代码：</span>${prod.product_code || '--'}</div>
+        <div class="row"><span class="label">产品名称：</span>${prod.product_name || '--'}</div>
+        <div class="row"><span class="label">结构类型：</span>${TYPE_LABEL[prod.product_type] || '--'}</div>
+        <div class="row"><span class="label">挂钩标的：</span>${prod.underlying || '--'}</div>
+        <div class="row"><span class="label">标的最新现价：</span>${formatPriceShow(prod.underlying_price)}</div>
+        <div class="row"><span class="label">产品当前状态：</span><span class="${statusInfo.className}">${statusInfo.text}</span></div>
+      </div>
+
+      <div class="section">
+        <h3>二、关键存续与观察日期</h3>
+        <div class="row"><span class="label">成立日期：</span>${prod.establish_date || '--'}</div>
+        <div class="row"><span class="label">到期日期：</span>${prod.contract_maturity_date || '--'}</div>
+        <div class="row"><span class="label">期初基准观察日：</span>${prod.start_obs_date || '--'}</div>
+        <div class="row"><span class="label">期末结算观察日：</span>${prod.end_obs_date || '--'}</div>
+        <div class="row"><span class="label">提前敲出终止日：</span>${prod.early_maturity_date || '未触发提前终止'}</div>
+      </div>
+
+      <div class="section">
+        <h3>三、期权收益结构约定参数</h3>
+    `;
+    const p = prod.structure_params;
+    html += `
+        <div class="row"><span class="label">行权价比例：</span>${p.strike_pct ? (p.strike_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">上涨敲出障碍价：</span>${p.up_barrier_pct ? (p.up_barrier_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">下跌敲入障碍价：</span>${p.down_barrier_pct ? (p.down_barrier_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">上涨收益参与率：</span>${p.participation_rate ? (p.participation_rate*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">保底约定年化收益率：</span>${p.min_return_pct ? (p.min_return_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">敲出触发约定年化：</span>${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</div>
+      </div>
+
+      <div class="section">
+        <h3>四、年化收益台账</h3>
+    `;
+    if (prod.product_type !== 'three_element') {
+      html += `<div class="row"><span class="label">当日动态估算年化：</span>${getEstimatedDisplay(prod)}</div>`;
+    }
+    html += `
+        <div class="row"><span class="label">最终锁定计提年化：</span>${formatPercentShow(prod.performance_base)}</div>
+      </div>
+    `;
+
+    card.innerHTML = html;
+  }
+
+  // 页面初始化：加载行情后渲染
+  if (product.product_code) {
+    loadLatestPrice(product).then(() => renderInvestorPage(product));
+  }
+</script>
+</body>
+</html>

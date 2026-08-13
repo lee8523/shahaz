@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>场外期权产品管理后台</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+    .container {
+      width: 96%;
+      margin: 20px auto;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .btn {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-primary {
+      background: #1677ff;
+      color: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    th {
+      background: #f7f8fa;
+      font-weight: 600;
+    }
+    .modal-mask {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    .modal-box {
+      background: #fff;
+      width: 720px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 6px;
+      padding: 24px;
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .form-row {
+      display: flex;
+      margin-bottom: 12px;
+      gap: 16px;
+    }
+    .form-item {
+      flex: 1;
+    }
+    .form-item label {
+      display: block;
+      margin-bottom: 4px;
+      color: #333;
+    }
+    .form-item input, .form-item select {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+    }
+    .block-title {
+      font-weight: 600;
+      margin: 20px 0 10px;
+      padding-left: 6px;
+      border-left: 3px solid #1677ff;
+    }
+    .modal-footer {
+      margin-top: 24px;
+      text-align: right;
+      gap: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <h2>期权结构化产品台账管理</h2>
+    <div>
+      <button class="btn btn-primary" id="importBtn">Excel批量导入</button>
+      <button class="btn" id="exportBtn" style="background:#f0f2f5;margin-left:8px">导出备份</button>
+    </div>
+  </div>
+
+  <table id="productTable">
+    <thead>
+      <tr>
+        <th>产品代码</th>
+        <th>产品名称</th>
+        <th>结构类型</th>
+        <th>挂钩标的</th>
+        <th>标的现价</th>
+        <th>产品成立日</th>
+        <th>到期日</th>
+        <th>期初观察日</th>
+        <th>期末观察日</th>
+        <th>当日估算年化</th>
+        <th>最终计提年化</th>
+        <th>产品状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- JS动态渲染行 -->
+    </tbody>
+  </table>
+</div>
+
+<!-- 隐藏的文件选择器 -->
+<input type="file" id="excelFileInput" accept=".xlsx,.xls" style="display:none">
+
+<!-- 重复数据策略弹窗 -->
+<div class="modal-mask" id="repeatModal">
+  <div class="modal-box" style="width:480px">
+    <div class="modal-title">发现重复产品代码</div>
+    <p style="margin-bottom:16px;color:#666">以下产品代码已存在：<span id="repeatCodes" style="color:#f53f3f"></span></p>
+    <p style="margin-bottom:16px">请选择处理策略：</p>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-primary" id="repeatCover">覆盖已有</button>
+      <button class="btn" id="repeatSkip" style="background:#f0f2f5">跳过重复</button>
+      <button class="btn" id="repeatCancel" style="background:#f0f2f5">取消导入</button>
+    </div>
+  </div>
+</div>
+
+<!-- 解析结果弹窗 -->
+<div class="modal-mask" id="resultModal">
+  <div class="modal-box" style="width:520px">
+    <div class="modal-title">导入结果</div>
+    <div style="margin-bottom:16px">
+      <p>成功：<span id="resultSuccess" style="color:#00b42a;font-weight:600">0</span> 条</p>
+      <p>失败：<span id="resultFail" style="color:#f53f3f;font-weight:600">0</span> 条</p>
+      <p>重复：<span id="resultRepeat" style="color:#ff7d00;font-weight:600">0</span> 条</p>
+    </div>
+    <div id="resultErrors" style="max-height:200px;overflow-y:auto;font-size:12px;color:#666;border:1px solid #eee;padding:8px;border-radius:4px;display:none"></div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" id="resultClose">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- 详情&编辑弹窗 -->
+<div class="modal-mask" id="detailModal">
+  <div class="modal-box">
+    <div class="modal-title">产品详情/编辑</div>
+
+    <div class="block-title">基础信息</div>
+    <div class="form-row">
+      <div class="form-item">
+        <label>产品代码</label>
+        <input type="text" id="inp_code" readonly>
+      </div>
+      <div class="form-item">
+        <label>产品名称</label>
+        <input type="text" id="inp_name">
+      </div>
+      <div class="form-item">
+        <label>结构类型</label>
+        <select id="inp_type">
+          <option value="single_shark">单鲨鲨鱼鳍</option>
+          <option value="binary">二元看涨</option>
+          <option value="three_element">三元雪球</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-item">
+        <label>挂钩标的</label>
+        <input type="text" id="inp_underlying">
+      </div>
+      <div class="form-item">
+        <label>标的最新现价</label>
+        <input type="text" id="inp_price" readonly>
+      </div>
+    </div>
+
+    <div class="block-title">关键观察日期</div>
+    <div class="form-row">
+      <div class="form-item">
+        <label>产品成立日</label>
+        <input type="date" id="inp_establish">
+      </div>
+      <div class="form-item">
+        <label>到期日</label>
+        <input type="date" id="inp_maturity">
+      </div>
+      <div class="form-item">
+        <label>期初观察日</label>
+        <input type="date" id="inp_start_obs">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-item">
+        <label>期末观察日</label>
+        <input type="date" id="inp_end_obs">
+      </div>
+      <div class="form-item">
+        <label>提前敲出终止日</label>
+        <input type="date" id="inp_early_end">
+      </div>
+      <div class="form-item"></div>
+    </div>
+
+    <div class="block-title">期权结构参数</div>
+    <div class="form-row">
+      <div class="form-item">
+        <label>行权价比例(%)</label>
+        <input type="number" id="inp_strike" step="0.01">
+      </div>
+      <div class="form-item">
+        <label>上涨敲出障碍价(%)</label>
+        <input type="number" id="inp_up_barrier" step="0.01">
+      </div>
+      <div class="form-item">
+        <label>下跌敲入障碍价(%)</label>
+        <input type="number" id="inp_down_barrier" step="0.01">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-item">
+        <label>上涨参与率(%)</label>
+        <input type="number" id="inp_participation" step="0.01">
+      </div>
+      <div class="form-item">
+        <label>保底年化收益率(%)</label>
+        <input type="number" id="inp_min_return" step="0.01">
+      </div>
+      <div class="form-item">
+        <label>敲出约定年化(%)</label>
+        <input type="number" id="inp_knockout" step="0.01">
+      </div>
+    </div>
+
+    <div class="block-title">收益台账（仅年化）</div>
+    <div class="form-row" id="estRow">
+      <div class="form-item">
+        <label>当日动态估算年化</label>
+        <input type="text" id="inp_est" readonly>
+      </div>
+      <div class="form-item">
+        <label>最终锁定计提年化</label>
+        <input type="text" id="inp_final" readonly>
+      </div>
+      <div class="form-item">
+        <label>后台录入实际兑付年化</label>
+        <input type="number" id="inp_actual" step="0.01">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn" id="closeModal">关闭</button>
+      <button class="btn btn-primary" id="saveBtn">保存修改</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import {
+    getProductStatusInfo,
+    formatPercentShow,
+    formatPriceShow,
+    getEstimatedDisplay
+  } from "../backend/common.util.js";
+  import { TYPE_LABEL } from "../backend/constant.js";
+  import { batchParseExcel } from "../backend/excel.parser.js";
+  import { INITIAL_PRODUCT_LIST } from "../backend/product-data.js";
+
+  // 全局产品数组：优先读 localStorage，无缓存则用初始模板
+  const STORAGE_KEY = 'product_list_cache';
+  let productList = (() => {
+    const cached = localStorage.getItem(STORAGE_KEY);
+    if (cached) {
+      try { return JSON.parse(cached); } catch(e) {}
+    }
+    return [...INITIAL_PRODUCT_LIST];
+  })();
+  const today = new Date().toISOString().split('T')[0];
+  let pendingRows = []; // 暂存待处理的Excel行
+
+  // 自动落存储
+  function saveToStorage() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(productList));
+  }
+
+  // ========== 加载最新行情 ==========
+  // 标的名称 → prices.json key 映射
+  const UNDERLYING_MAP = {
+    '黄金': 'AU9999',
+    '中证1000': '000852',
+    '中证500': '000905',
+    '沪深300': '000300'
+  };
+
+  async function loadLatestPrices() {
+    try {
+      const resp = await fetch('../../backend/prices.json?t=' + Date.now());
+      if (!resp.ok) return;
+      const prices = await resp.json();
+      productList.forEach(prod => {
+        const key = UNDERLYING_MAP[prod.underlying];
+        if (key && prices[key] && prices[key].price) {
+          prod.underlying_price = prices[key].price;
+        }
+      });
+      saveToStorage();
+    } catch(e) {
+      console.warn('加载行情失败:', e);
+    }
+  }
+
+  // ========== Excel 导入逻辑 ==========
+  // importBtn 点击 → 触发文件选择
+  document.getElementById('importBtn').onclick = () => {
+    document.getElementById('excelFileInput').click();
+  };
+
+  // 文件选择后解析
+  document.getElementById('excelFileInput').onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    // 读取 Excel
+    const XLSX = await import('https://cdn.sheetjs.com/xlsx-0.20.0/package/xlsx.mjs');
+    const data = await file.arrayBuffer();
+    const wb = XLSX.read(data, { type: 'array' });
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
+    
+    if (rows.length === 0) {
+      alert('Excel 为空');
+      return;
+    }
+    
+    // 检测重复
+    const existCodes = new Set(productList.map(p => p.product_code));
+    const tempResult = batchParseExcel(rows, new Set(), 'skip'); // 先检测不处理重复
+    const repeatCodes = tempResult.successList
+      .map(p => p.product_code)
+      .filter(code => existCodes.has(code));
+    
+    if (repeatCodes.length > 0) {
+      // 有重复，弹窗选择策略
+      pendingRows = rows;
+      document.getElementById('repeatCodes').textContent = repeatCodes.join(', ');
+      document.getElementById('repeatModal').style.display = 'flex';
+    } else {
+      // 无重复，直接解析
+      executeImport(rows, 'skip');
+    }
+    
+    // 清空 file input
+    e.target.value = '';
+  };
+
+  // 重复策略弹窗按钮
+  document.getElementById('repeatCover').onclick = () => {
+    document.getElementById('repeatModal').style.display = 'none';
+    executeImport(pendingRows, 'cover');
+  };
+  document.getElementById('repeatSkip').onclick = () => {
+    document.getElementById('repeatModal').style.display = 'none';
+    executeImport(pendingRows, 'skip');
+  };
+  document.getElementById('repeatCancel').onclick = () => {
+    document.getElementById('repeatModal').style.display = 'none';
+    pendingRows = [];
+  };
+
+  // 执行导入
+  function executeImport(rows, repeatMode) {
+    const existCodes = new Set(productList.map(p => p.product_code));
+    const result = batchParseExcel(rows, existCodes, repeatMode);
+    
+    // 处理覆盖模式：替换已有产品
+    if (repeatMode === 'cover') {
+      result.successList.forEach(newProd => {
+        const idx = productList.findIndex(p => p.product_code === newProd.product_code);
+        if (idx >= 0) {
+          productList[idx] = newProd; // 覆盖
+        } else {
+          productList.push(newProd); // 新增
+        }
+      });
+    } else {
+      // 跳过模式：只添加不重复的
+      productList.push(...result.successList);
+    }
+    
+    // 显示结果弹窗
+    document.getElementById('resultSuccess').textContent = result.successList.length;
+    document.getElementById('resultFail').textContent = result.failList.length;
+    document.getElementById('resultRepeat').textContent = result.repeatList.length;
+    
+    // 显示错误明细
+    const errorsDiv = document.getElementById('resultErrors');
+    if (result.failList.length > 0) {
+      errorsDiv.style.display = 'block';
+      errorsDiv.innerHTML = result.failList.map((f, i) => 
+        `<p style="margin:4px 0">行${i + 1}: ${f.errors.join('; ')}</p>`
+      ).join('');
+    } else {
+      errorsDiv.style.display = 'none';
+    }
+    
+    document.getElementById('resultModal').style.display = 'flex';
+    
+    // 刷新表格 + 落存储
+    renderTable();
+    saveToStorage();
+  }
+
+  // 结果弹窗关闭
+  document.getElementById('resultClose').onclick = () => {
+    document.getElementById('resultModal').style.display = 'none';
+  };
+
+  // 导出备份按钮
+  document.getElementById('exportBtn').onclick = () => {
+    const content = `// 产品数据备份（导出时间：${new Date().toLocaleString('zh-CN')}）\nexport const INITIAL_PRODUCT_LIST = ${JSON.stringify(productList, null, 2)};\n`;
+    const blob = new Blob([content], { type: 'text/javascript' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'product-data.js';
+    a.click();
+    URL.revokeObjectURL(url);
+    alert('备份文件已下载，可覆盖 backend/product-data.js');
+  };
+
+  // 渲染表格
+  function renderTable() {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    productList.forEach(prod => {
+      const statusObj = getProductStatusInfo(prod, today);
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${prod.product_code}</td>
+        <td>${prod.product_name}</td>
+        <td>${TYPE_LABEL[prod.product_type] || '--'}</td>
+        <td>${prod.underlying}</td>
+        <td>${formatPriceShow(prod.underlying_price)}</td>
+        <td>${prod.establish_date || '--'}</td>
+        <td>${prod.contract_maturity_date || '--'}</td>
+        <td>${prod.start_obs_date || '--'}</td>
+        <td>${prod.end_obs_date || '--'}</td>
+        <td>${getEstimatedDisplay(prod)}</td>
+        <td>${formatPercentShow(prod.performance_base)}</td>
+        <td><span class="${statusObj.className}">${statusObj.text}</span></td>
+        <td>
+          <button class="btn view-btn" data-code="${prod.product_code}">详情</button>
+          <button class="btn edit-btn" data-code="${prod.product_code}">编辑</button>
+          <button class="btn link-btn" data-code="${prod.product_code}" style="background:#f6ffed;color:#00b42a">生成链接</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+    bindTableEvent();
+  }
+
+  function bindTableEvent() {
+    document.querySelectorAll('.view-btn, .edit-btn').forEach(btn => {
+      btn.onclick = () => {
+        const code = btn.dataset.code;
+        const prod = productList.find(p => p.product_code === code);
+        fillModal(prod);
+        document.getElementById('detailModal').style.display = 'flex';
+      }
+    });
+    
+    // 生成投资人查看链接
+    document.querySelectorAll('.link-btn').forEach(btn => {
+      btn.onclick = () => {
+        const code = btn.dataset.code;
+        // 保存产品数据到 localStorage 供投资人页面读取
+        localStorage.setItem('investor_product_' + code, JSON.stringify(
+          productList.find(p => p.product_code === code)
+        ));
+        // 生成链接并打开
+        const url = `../invest/investor_view.html?code=${encodeURIComponent(code)}`;
+        window.open(url, '_blank');
+        // 复制链接到剪贴板
+        const fullUrl = window.location.origin + window.location.pathname.replace(/admin\/index\.html$/, '') + `invest/investor_view.html?code=${encodeURIComponent(code)}`;
+        navigator.clipboard.writeText(fullUrl).then(() => {
+          alert('链接已复制到剪贴板');
+        }).catch(() => {
+          // 剪贴板失败不影响使用
+        });
+      }
+    });
+  }
+
+  // 填充弹窗数据
+  function fillModal(prod) {
+    document.getElementById('inp_code').value = prod.product_code;
+    document.getElementById('inp_name').value = prod.product_name;
+    document.getElementById('inp_type').value = prod.product_type;
+    document.getElementById('inp_underlying').value = prod.underlying;
+    document.getElementById('inp_price').value = formatPriceShow(prod.underlying_price);
+
+    document.getElementById('inp_establish').value = prod.establish_date || '';
+    document.getElementById('inp_maturity').value = prod.contract_maturity_date || '';
+    document.getElementById('inp_start_obs').value = prod.start_obs_date || '';
+    document.getElementById('inp_end_obs').value = prod.end_obs_date || '';
+    document.getElementById('inp_early_end').value = prod.early_maturity_date || '';
+
+    const sp = prod.structure_params;
+    document.getElementById('inp_strike').value = sp.strike_pct ? (sp.strike_pct * 100) : '';
+    document.getElementById('inp_up_barrier').value = sp.up_barrier_pct ? (sp.up_barrier_pct * 100) : '';
+    document.getElementById('inp_down_barrier').value = sp.down_barrier_pct ? (sp.down_barrier_pct * 100) : '';
+    document.getElementById('inp_participation').value = sp.participation_rate ? (sp.participation_rate * 100) : '';
+    document.getElementById('inp_min_return').value = sp.min_return_pct ? (sp.min_return_pct * 100) : '';
+    document.getElementById('inp_knockout').value = sp.knockout_base_pct ? (sp.knockout_base_pct * 100) : '';
+
+    // 三元隐藏估算输入框
+    const estInput = document.getElementById('inp_est');
+    estInput.value = getEstimatedDisplay(prod);
+    document.getElementById('estRow').style.display = prod.product_type === 'three_element' ? 'none' : 'flex';
+
+    document.getElementById('inp_final').value = formatPercentShow(prod.performance_base);
+    document.getElementById('inp_actual').value = prod.actual_final_return ? (prod.actual_final_return * 100) : '';
+  }
+
+  // 关闭弹窗
+  document.getElementById('closeModal').onclick = () => {
+    document.getElementById('detailModal').style.display = 'none';
+  }
+
+  // 保存逻辑简写
+  document.getElementById('saveBtn').onclick = () => {
+    alert('保存成功（业务逻辑对接excel.parser.js即可）');
+    document.getElementById('detailModal').style.display = 'none';
+  }
+
+  // 初始化：加载行情后渲染
+  loadLatestPrices().then(() => renderTable());
+</script>
+</body>
+</html>

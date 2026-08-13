@@ -1,0 +1,38 @@
+.tag-green {
+  background: #e6f7ee;
+  color: #00b42a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.tag-red {
+  background: #ffe8e8;
+  color: #f53f3f;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.tag-yellow {
+  background: #fffbe6;
+  color: #ff7d00;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.tag-gray {
+  background: #f2f3f5;
+  color: #666666;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.btn {
+  margin: 0 3px;
+}
+.view-btn {
+  background: #f0f2f5;
+}
+.edit-btn {
+  background: #e6f7ff;
+  color: #1677ff;
+}
