@@ -34,6 +34,9 @@ export function parseExcelRow(row) {
   const early_maturity_date = extractDate(row["产品提前终止日"]);
   const contract_maturity_date = parseMaturity(row["固收+期权结构期限"], establish_date) 
     || extractDate(row["合同到期日"]);
+  
+  // 最终基准（实际业绩报酬计提基准）
+  const performance_base = parsePercentStr(row["实际业绩报酬计提基准"]);
 
   // 类型映射
   const product_type = PRODUCT_TYPE_MAP[product_type_raw] ?? null;
@@ -68,7 +71,7 @@ export function parseExcelRow(row) {
     early_maturity_date,
     contract_maturity_date,
 
-    performance_base: null,
+    performance_base: performance_base,
     estimated_base: null,
     actual_final_return: null,
 
