@@ -127,6 +127,7 @@
         <th>结构类型</th>
         <th>挂钩标的</th>
         <th>标的现价</th>
+        <th>期初价</th>
         <th>产品成立日</th>
         <th>到期日</th>
         <th>期初观察日</th>
@@ -306,6 +307,7 @@
   // 全局产品数据
   let productList = [];
   let productsData = { products: [], underlyings: {} }; // 完整JSON数据
+  let initialPrices = {}; // 期初价格
   let productsSha = ''; // 用于GitHub API更新
   const today = new Date().toISOString().split('T')[0];
   let pendingRows = []; // 暂存待处理的Excel行
@@ -326,8 +328,13 @@
         productsData = await resp.json();
         productList = productsData.products || [];
       }
+      // 加载期初价格
+      const initResp = await fetch('../../backend/initial_prices.json?t=' + Date.now());
+      if (initResp.ok) {
+        initialPrices = await initResp.json();
+      }
     } catch(e) {
-      console.warn('加载products.json失败:', e);
+      console.warn('加载数据失败:', e);
     }
   }
 
@@ -570,6 +577,7 @@
         <td>${TYPE_LABEL[prod.product_type] || '--'}</td>
         <td>${formatUnderlying(prod.underlying)}</td>
         <td>${formatPriceShow(prod.underlying_price)}</td>
+        <td>${formatPriceShow(initialPrices[prod.product_code]?.price)}</td>
         <td>${prod.establish_date || '--'}</td>
         <td>${prod.contract_maturity_date || '--'}</td>
         <td>${prod.start_obs_date || '--'}</td>

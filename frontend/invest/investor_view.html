@@ -108,6 +108,7 @@
         <div class="row"><span class="label">结构类型：</span>${TYPE_LABEL[prod.product_type] || '--'}</div>
         <div class="row"><span class="label">挂钩标的：</span>${formatUnderlying(prod.underlying)}</div>
         <div class="row"><span class="label">标的最新现价：</span>${formatPriceShow(prod.underlying_price)}</div>
+        <div class="row"><span class="label">标的期初价：</span>${formatPriceShow(prod.initial_price)}</div>
         <div class="row"><span class="label">产品当前状态：</span><span class="${statusInfo.className}">${statusInfo.text}</span></div>
       </div>
 
@@ -124,10 +125,15 @@
         <h3>三、期权收益结构约定参数</h3>
     `;
     const p = prod.structure_params;
+    const initPrice = prod.initial_price;
+    // 计算障碍价（基于期初价）
+    const upBarrierPrice = (initPrice && p.up_barrier_pct) ? (initPrice * p.up_barrier_pct).toFixed(2) : null;
+    const downBarrierPrice = (initPrice && p.down_barrier_pct) ? (initPrice * p.down_barrier_pct).toFixed(2) : null;
+    
     html += `
         <div class="row"><span class="label">行权价比例：</span>${p.strike_pct ? (p.strike_pct*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">上涨敲出障碍价：</span>${p.up_barrier_pct ? (p.up_barrier_pct*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">下跌敲入障碍价：</span>${p.down_barrier_pct ? (p.down_barrier_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">上涨敲出障碍价：</span>${p.up_barrier_pct ? (p.up_barrier_pct*100).toFixed(2)+'%' : '--'}${upBarrierPrice ? '（' + upBarrierPrice + '）' : ''}</div>
+        <div class="row"><span class="label">下跌敲入障碍价：</span>${p.down_barrier_pct ? (p.down_barrier_pct*100).toFixed(2)+'%' : '--'}${downBarrierPrice ? '（' + downBarrierPrice + '）' : ''}</div>
         <div class="row"><span class="label">上涨收益参与率：</span>${p.participation_rate ? (p.participation_rate*100).toFixed(2)+'%' : '--'}</div>
         <div class="row"><span class="label">未行权基准：</span>${p.min_return_pct ? (p.min_return_pct*100).toFixed(2)+'%' : '--'}</div>
         <div class="row"><span class="label">敲出基准：</span>${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</div>

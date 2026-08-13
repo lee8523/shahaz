@@ -33,6 +33,7 @@
         <th>结构类型</th>
         <th>挂钩标的</th>
         <th>标的现价</th>
+        <th>期初价</th>
         <th>成立日</th>
         <th>到期日</th>
         <th>估算基准</th>
@@ -123,6 +124,7 @@
         <td>${TYPE_LABEL[prod.product_type] || '--'}</td>
         <td>${formatUnderlying(prod.underlying)}</td>
         <td>${formatPriceShow(prod.underlying_price)}</td>
+        <td>${formatPriceShow(initialPrices[prod.product_code]?.price)}</td>
         <td>${prod.establish_date || '--'}</td>
         <td>${prod.contract_maturity_date || '--'}</td>
         <td>${getEstimatedDisplay(prod)}</td>
