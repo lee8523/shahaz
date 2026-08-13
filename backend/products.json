@@ -1,9 +1,3442 @@
 {
-  "products": [],
+  "products": [
+    {
+      "product_code": "SEB602",
+      "product_name": "华夏资本龙跃慧盈206号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "白银期货（交易代码：AG2702）",
+      "underlying_price": null,
+      "establish_date": "2026-08-20",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-04",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.05,
+        "up_barrier_pct": 1.2,
+        "down_barrier_pct": null,
+        "participation_rate": 0.13,
+        "min_return_pct": 0.0155,
+        "knockout_base_pct": 0.0155,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBRL04",
+      "product_name": "华夏资本龙跃慧盈205号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000指数（代码：000852.SH）",
+      "underlying_price": null,
+      "establish_date": "2026-08-21",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-08-21",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.02,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.0412,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SEA683",
+      "product_name": "华夏资本龙跃慧盈203号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "白银期货（交易代码：AG2702）",
+      "underlying_price": null,
+      "establish_date": "2026-08-25",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-22",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.13,
+        "down_barrier_pct": null,
+        "participation_rate": 0.16699999999999998,
+        "min_return_pct": 0.0165,
+        "knockout_base_pct": 0.0165,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SCX437",
+      "product_name": "华夏资本龙跃慧盈202号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "科创50ETF（交易代码：588000.SH）",
+      "underlying_price": null,
+      "establish_date": "2026-08-17",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-02-01",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.03,
+        "up_barrier_pct": 1.17,
+        "down_barrier_pct": null,
+        "participation_rate": 0.079,
+        "min_return_pct": 0.017,
+        "knockout_base_pct": 0.017,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SCS929",
+      "product_name": "华夏资本龙跃慧盈201号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（交易代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2026-08-06",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-02-01",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.375,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SCS711",
+      "product_name": "华夏资本龙跃慧盈200号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "创业板ETF（交易代码：159915.SZ）",
+      "underlying_price": null,
+      "establish_date": "2026-08-06",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-12-20",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.03,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.0925,
+        "min_return_pct": 0.0166,
+        "knockout_base_pct": 0.0168,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SCL634",
+      "product_name": "华夏资本龙跃慧盈199号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "科创50（588000.SH）",
+      "underlying_price": null,
+      "establish_date": "2026-07-29",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.03,
+        "up_barrier_pct": 1.17,
+        "down_barrier_pct": null,
+        "participation_rate": 0.174,
+        "min_return_pct": 0.016,
+        "knockout_base_pct": 0.016399999999999998,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SCG300",
+      "product_name": "华夏资本龙跃慧盈198号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-07-24",
+      "start_obs_date": "2026-08-05",
+      "end_obs_date": "2026-12-31",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.14300000000000002,
+        "min_return_pct": 0.016,
+        "knockout_base_pct": 0.016,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUD00",
+      "product_name": "华夏资本龙跃慧盈197号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-07-28",
+      "start_obs_date": "2026-08-11",
+      "end_obs_date": "2028-07-27",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-07-28",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.0403,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBPG46",
+      "product_name": "华夏资本龙跃慧盈196号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-07-16",
+      "start_obs_date": "2026-07-23",
+      "end_obs_date": "2027-01-04",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.01,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.26,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.016,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SB8784",
+      "product_name": "华夏资本龙跃慧盈195号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "碳酸锂期货",
+      "underlying_price": null,
+      "establish_date": "2026-07-02",
+      "start_obs_date": "2026-07-13",
+      "end_obs_date": "2026-09-30",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-10-08",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.395,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.027999999999999997,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SB8911",
+      "product_name": "华夏资本龙跃慧盈193号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-07-08",
+      "start_obs_date": "2026-07-16",
+      "end_obs_date": "2026-12-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-12-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.267,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.021,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SB5856",
+      "product_name": "华夏资本龙跃慧盈192号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铜期货",
+      "underlying_price": null,
+      "establish_date": "2026-07-07",
+      "start_obs_date": "2026-07-17",
+      "end_obs_date": "2027-01-04",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.245,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SB3946",
+      "product_name": "华夏资本龙跃慧盈191号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-07-09",
+      "start_obs_date": "2026-07-17",
+      "end_obs_date": "2028-07-07",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-07-09",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.0403,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SB1389",
+      "product_name": "华夏资本龙跃慧盈190号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-07-07",
+      "start_obs_date": "2026-07-15",
+      "end_obs_date": "2027-01-04",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2027-01-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.2925,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.019,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SANX68",
+      "product_name": "华夏资本龙跃慧盈187号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-06-16",
+      "start_obs_date": "2026-06-24",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.28,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.0196,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAMX00",
+      "product_name": "华夏资本龙跃慧盈186号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-06-12",
+      "start_obs_date": "2026-06-23",
+      "end_obs_date": "2028-06-09",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-06-12",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.02,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.0435,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SALA52",
+      "product_name": "华夏资本龙跃慧盈185号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-06-16",
+      "start_obs_date": "2026-06-24",
+      "end_obs_date": "2026-11-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-11-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.255,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAHE93",
+      "product_name": "华夏资本龙跃慧盈184号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪银期货（AG2612.SHF）",
+      "underlying_price": null,
+      "establish_date": "2026-05-27",
+      "start_obs_date": "2026-06-03",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.18,
+        "down_barrier_pct": null,
+        "participation_rate": 0.239,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.019,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAHE46",
+      "product_name": "华夏资本龙跃慧盈183号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-06-03",
+      "start_obs_date": "2026-06-10",
+      "end_obs_date": "2026-11-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-11-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.3025,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.018600000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAGJ97",
+      "product_name": "华夏资本龙跃慧盈182号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-05-28",
+      "start_obs_date": "2026-06-03",
+      "end_obs_date": "2028-05-26",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-05-28",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.02,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.002,
+        "knockout_base_pct": 0.0425,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAES00",
+      "product_name": "华夏资本龙跃慧盈181号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-05-27",
+      "start_obs_date": "2026-06-03",
+      "end_obs_date": "2026-11-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-11-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.305,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.019,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAAL56",
+      "product_name": "华夏资本龙跃慧盈180号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-05-20",
+      "start_obs_date": "2026-05-28",
+      "end_obs_date": "2026-11-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-11-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.204,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.017,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAAQ54",
+      "product_name": "华夏资本龙跃慧盈179号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-05-13",
+      "start_obs_date": "2026-05-22",
+      "end_obs_date": "2028-05-12",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-05-13",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.02,
+        "down_barrier_pct": 0.75,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.040999999999999995,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBWG63",
+      "product_name": "华夏资本龙跃慧盈178号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-05-08",
+      "start_obs_date": "2026-05-14",
+      "end_obs_date": "2026-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.187,
+        "min_return_pct": 0.012,
+        "knockout_base_pct": 0.0195,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBWG71",
+      "product_name": "华夏资本龙跃慧盈177号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铝期货",
+      "underlying_price": null,
+      "establish_date": "2026-04-29",
+      "start_obs_date": "2026-05-12",
+      "end_obs_date": "2026-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.25,
+        "down_barrier_pct": null,
+        "participation_rate": 0.155,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.022400000000000003,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBWE81",
+      "product_name": "华夏资本龙跃慧盈176号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-04-29",
+      "start_obs_date": "2026-05-12",
+      "end_obs_date": "2026-10-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-10-26",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.48,
+        "min_return_pct": 0.005,
+        "knockout_base_pct": 0.0235,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBWA41",
+      "product_name": "华夏资本龙跃慧盈175号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-04-23",
+      "start_obs_date": "2026-05-06",
+      "end_obs_date": "2026-10-26",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-10-27",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 0.98,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.25,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBVF60",
+      "product_name": "华夏资本龙跃慧盈173号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金（AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2026-04-21",
+      "start_obs_date": "2026-04-30",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.01,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.193,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.019,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBVF58",
+      "product_name": "华夏资本龙跃慧盈172号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-04-17",
+      "start_obs_date": "2026-04-27",
+      "end_obs_date": "2026-12-29",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-12-30",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.46,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.016200000000000003,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBVF55",
+      "product_name": "华夏资本龙跃慧盈171号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-04-17",
+      "start_obs_date": "2026-04-27",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.46299999999999997,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.016200000000000003,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUR59",
+      "product_name": "华夏资本龙跃慧盈170号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数（000852.SH）",
+      "underlying_price": null,
+      "establish_date": "2026-04-14",
+      "start_obs_date": "2026-04-23",
+      "end_obs_date": "2026-07-13",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-07-14",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.18,
+        "min_return_pct": 0.017,
+        "knockout_base_pct": 0.017,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUR60",
+      "product_name": "华夏资本龙跃慧盈169号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-04-14",
+      "start_obs_date": "2026-04-23",
+      "end_obs_date": "2026-07-13",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-07-14",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.1625,
+        "min_return_pct": 0.0175,
+        "knockout_base_pct": 0.0178,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUK70",
+      "product_name": "华夏资本龙跃慧盈168号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数（000852.SH）",
+      "underlying_price": null,
+      "establish_date": "2026-04-09",
+      "start_obs_date": "2026-04-20",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.28,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.020499999999999997,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUD43",
+      "product_name": "华夏资本龙跃慧盈165号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铝期货",
+      "underlying_price": null,
+      "establish_date": "2026-04-08",
+      "start_obs_date": "2026-04-15",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.18,
+        "down_barrier_pct": null,
+        "participation_rate": 0.49,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.03,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUD42",
+      "product_name": "华夏资本龙跃慧盈163号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-04-08",
+      "start_obs_date": "2026-04-15",
+      "end_obs_date": "2026-09-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 0.95,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.38,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.03,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBUD41",
+      "product_name": "华夏资本龙跃慧盈162号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-04-08",
+      "start_obs_date": "2026-04-17",
+      "end_obs_date": "2028-04-07",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-04-08",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.043,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBTQ96",
+      "product_name": "华夏资本龙跃慧盈161号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-04-03",
+      "start_obs_date": "2026-04-13",
+      "end_obs_date": "2026-09-14",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-15",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.24,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBTQ95",
+      "product_name": "华夏资本龙跃慧盈160号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铜期货（CU2611.SHF）",
+      "underlying_price": null,
+      "establish_date": "2026-04-08",
+      "start_obs_date": "2026-04-15",
+      "end_obs_date": "2026-09-14",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-15",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.256,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.0195,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBTA40",
+      "product_name": "华夏资本龙跃慧盈158号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-03-20",
+      "start_obs_date": "2026-03-30",
+      "end_obs_date": "2026-09-21",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-09-22",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.258,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.0202,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBRY82",
+      "product_name": "华夏资本龙跃慧盈155号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-03-05",
+      "start_obs_date": "2026-03-12",
+      "end_obs_date": "2028-03-03",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-03-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.04,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBRJ01",
+      "product_name": "华夏资本龙跃慧盈153号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-03-05",
+      "start_obs_date": "2026-03-12",
+      "end_obs_date": "2028-03-03",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2028-03-05",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.04,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBRJ00",
+      "product_name": "华夏资本龙跃慧盈152号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铜期货（CU2608.SHF）",
+      "underlying_price": null,
+      "establish_date": "2026-03-10",
+      "start_obs_date": "2026-03-17",
+      "end_obs_date": "2026-06-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.365,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.0195,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBRH97",
+      "product_name": "华夏资本龙跃慧盈151号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-03-05",
+      "start_obs_date": "2026-03-12",
+      "end_obs_date": "2026-06-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.35,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.0195,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBPN13",
+      "product_name": "华夏资本龙跃慧盈98号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铝期货（AL2608.SHF）",
+      "underlying_price": null,
+      "establish_date": "2026-02-04",
+      "start_obs_date": "2026-02-12",
+      "end_obs_date": "2026-06-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.305,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.0195,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBPY11",
+      "product_name": "华夏资本龙跃慧盈99号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-02-04",
+      "start_obs_date": "2026-02-11",
+      "end_obs_date": "2028-02-03",
+      "early_maturity_date": "2026-05-12",
+      "contract_maturity_date": "2028-02-04",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.04,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2026-05-12"
+      }
+    },
+    {
+      "product_code": "SBPH75",
+      "product_name": "华夏资本龙跃慧盈97号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铜期货（CU2608.SHF）",
+      "underlying_price": null,
+      "establish_date": "2026-01-27",
+      "start_obs_date": "2026-02-05",
+      "end_obs_date": "2026-06-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.285,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBNF98",
+      "product_name": "华夏资本龙跃慧盈88号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-01-08",
+      "start_obs_date": "2026-01-15",
+      "end_obs_date": "2026-06-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.24,
+        "min_return_pct": 0.013999999999999999,
+        "knockout_base_pct": 0.013999999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBNA67",
+      "product_name": "华夏资本龙跃慧盈127号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-01-15",
+      "start_obs_date": "2026-01-26",
+      "end_obs_date": "2026-06-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.21,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.02,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBMW19",
+      "product_name": "华夏资本龙跃慧盈86号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铜2608（交易代码：CU2608.SHF）",
+      "underlying_price": null,
+      "establish_date": "2026-01-08",
+      "start_obs_date": "2026-01-16",
+      "end_obs_date": "2026-06-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.2,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.027999999999999997,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBMW13",
+      "product_name": "华夏资本龙跃慧盈84号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-01-08",
+      "start_obs_date": "2026-01-16",
+      "end_obs_date": "2028-01-07",
+      "early_maturity_date": "2026-05-19",
+      "contract_maturity_date": "2028-01-08",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.0405,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2026-05-19"
+      }
+    },
+    {
+      "product_code": "SBMW17",
+      "product_name": "华夏资本龙跃慧盈85号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2026-01-08",
+      "start_obs_date": "2026-01-15",
+      "end_obs_date": "2026-06-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.48,
+        "min_return_pct": 0.005,
+        "knockout_base_pct": 0.025,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBMV58",
+      "product_name": "华夏资本龙跃慧盈83号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2026-01-20",
+      "start_obs_date": "2026-01-28",
+      "end_obs_date": "2026-06-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-06-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.01,
+        "up_barrier_pct": 1.09,
+        "down_barrier_pct": null,
+        "participation_rate": 0.32,
+        "min_return_pct": 0.014499999999999999,
+        "knockout_base_pct": 0.014499999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBMB36",
+      "product_name": "华夏资本龙跃慧盈81号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "沪铜期货CU2606",
+      "underlying_price": null,
+      "establish_date": "2025-12-31",
+      "start_obs_date": "2026-01-09",
+      "end_obs_date": "2026-04-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-04-27",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.265,
+        "min_return_pct": 0.013500000000000002,
+        "knockout_base_pct": 0.013500000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBJE72",
+      "product_name": "华夏资本龙跃慧盈80号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金9999",
+      "underlying_price": null,
+      "establish_date": "2025-11-06",
+      "start_obs_date": "2025-11-17",
+      "end_obs_date": "2026-02-06",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-02-09",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.1,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4125,
+        "min_return_pct": 0.012,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBHN43",
+      "product_name": "华夏资本龙跃慧盈96号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-10-28",
+      "start_obs_date": "2025-11-05",
+      "end_obs_date": "2027-10-27",
+      "early_maturity_date": "2026-02-06",
+      "contract_maturity_date": "2027-10-28",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.040999999999999995,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2026-02-06"
+      }
+    },
+    {
+      "product_code": "SBHL30",
+      "product_name": "华夏资本龙跃慧盈79号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "白银期货AG2604",
+      "underlying_price": null,
+      "establish_date": "2025-10-24",
+      "start_obs_date": "2025-11-04",
+      "end_obs_date": "2026-01-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-26",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.188,
+        "min_return_pct": 0.012,
+        "knockout_base_pct": 0.0182,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGP27",
+      "product_name": "华夏资本龙跃慧盈92号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-10-14",
+      "start_obs_date": "2025-10-21",
+      "end_obs_date": "2026-01-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-26",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.205,
+        "min_return_pct": 0.013500000000000002,
+        "knockout_base_pct": 0.013500000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGN18",
+      "product_name": "华夏资本龙跃慧盈95号",
+      "product_type_raw": "固收+二元",
+      "product_type": "binary",
+      "underlying": "中证500",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-23",
+      "end_obs_date": "2026-10-14",
+      "early_maturity_date": "2026-01-24",
+      "contract_maturity_date": "2026-10-15",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": null,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": null,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.0408,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2026-01-24"
+      }
+    },
+    {
+      "product_code": "SBGN19",
+      "product_name": "华夏资本龙跃慧盈126号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证500",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-23",
+      "end_obs_date": "2026-03-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-03-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.415,
+        "min_return_pct": 0.016,
+        "knockout_base_pct": 0.021,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGN16",
+      "product_name": "华夏资本龙跃慧盈94号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证500",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-22",
+      "end_obs_date": "2026-03-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-03-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.47,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.013000000000000001,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGN14",
+      "product_name": "华夏资本龙跃慧盈93号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证500",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-22",
+      "end_obs_date": "2026-03-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-03-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.47,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.013000000000000001,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGN13",
+      "product_name": "华夏资本龙跃慧盈78号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金9999和中证500指数",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-22",
+      "end_obs_date": "2026-01-13",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-14",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.01,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.11359999999999999,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGN10",
+      "product_name": "华夏资本龙跃慧盈77号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证500指数",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-23",
+      "end_obs_date": "2026-03-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-03-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.52,
+        "min_return_pct": 0.005,
+        "knockout_base_pct": 0.03,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGK50",
+      "product_name": "华夏资本龙跃慧盈76号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金9999和中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-22",
+      "end_obs_date": "2026-04-14",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-04-15",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.425,
+        "min_return_pct": 0.013999999999999999,
+        "knockout_base_pct": 0.013999999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAXG20",
+      "product_name": "华夏资本龙跃慧盈125号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-23",
+      "end_obs_date": "2026-03-24",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-03-25",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.45,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBGK53",
+      "product_name": "华夏资本龙跃慧盈75号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-10-21",
+      "start_obs_date": "2025-10-28",
+      "end_obs_date": "2027-10-20",
+      "early_maturity_date": "2026-01-29",
+      "contract_maturity_date": "2027-10-21",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.0405,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2026-01-29"
+      }
+    },
+    {
+      "product_code": "SBGK20",
+      "product_name": "华夏资本龙跃慧盈91号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "南方东英恒生科技etf（3033.HK）",
+      "underlying_price": null,
+      "establish_date": "2025-10-15",
+      "start_obs_date": "2025-10-22",
+      "end_obs_date": "2026-01-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-26",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.16,
+        "down_barrier_pct": null,
+        "participation_rate": 0.285,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.01,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBCK35",
+      "product_name": "华夏资本龙跃慧盈73号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-08-15",
+      "start_obs_date": "2025-08-26",
+      "end_obs_date": "2027-08-13",
+      "early_maturity_date": "2026-01-27",
+      "contract_maturity_date": "2027-08-15",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.03,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0.001,
+        "knockout_base_pct": 0.04,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2026-01-27"
+      }
+    },
+    {
+      "product_code": "SAXG19",
+      "product_name": "华夏资本龙跃慧盈124号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-08-07",
+      "start_obs_date": "2025-08-14",
+      "end_obs_date": "2026-01-05",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-06",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.43,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBCK30",
+      "product_name": "华夏资本龙跃慧盈72号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-08-07",
+      "start_obs_date": "2025-08-14",
+      "end_obs_date": "2026-02-06",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-02-07",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.75,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBCH03",
+      "product_name": "华夏资本龙跃慧盈50号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-08-06",
+      "start_obs_date": "2025-08-13",
+      "end_obs_date": "2026-01-21",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.45,
+        "min_return_pct": 0.01,
+        "knockout_base_pct": 0.021,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBBV63",
+      "product_name": "华夏资本龙跃慧盈49号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金9999",
+      "underlying_price": null,
+      "establish_date": "2025-07-29",
+      "start_obs_date": "2025-08-06",
+      "end_obs_date": "2025-10-28",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-10-29",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.21,
+        "min_return_pct": 0.016,
+        "knockout_base_pct": 0.016,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAXG18",
+      "product_name": "华夏资本龙跃慧盈123号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-07-22",
+      "start_obs_date": "2025-07-30",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.01,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.36,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBBL03",
+      "product_name": "华夏资本龙跃慧盈71号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-07-18",
+      "start_obs_date": "2025-07-28",
+      "end_obs_date": "2026-01-05",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-06",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.01,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.39,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBBH11",
+      "product_name": "华夏资本龙跃慧盈70号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-07-17",
+      "start_obs_date": "2025-07-24",
+      "end_obs_date": "2026-01-16",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-17",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.45,
+        "min_return_pct": 0.0155,
+        "knockout_base_pct": 0.0155,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAV22",
+      "product_name": "华夏资本龙跃慧盈119号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-07-10",
+      "start_obs_date": "2025-07-21",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.17,
+        "down_barrier_pct": null,
+        "participation_rate": 0.54,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAV23",
+      "product_name": "华夏资本龙跃慧盈48号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-07-10",
+      "start_obs_date": "2025-07-21",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.33,
+        "min_return_pct": 0.0155,
+        "knockout_base_pct": 0.0155,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAP59",
+      "product_name": "华夏资本龙跃慧盈69号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-07-09",
+      "start_obs_date": "2025-07-16",
+      "end_obs_date": "2027-07-08",
+      "early_maturity_date": "2025-10-17",
+      "contract_maturity_date": "2027-07-09",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.038,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2025-10-17"
+      }
+    },
+    {
+      "product_code": "SBAJ46",
+      "product_name": "华夏资本龙跃慧盈117号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2025-07-07",
+      "start_obs_date": "2025-07-14",
+      "end_obs_date": "2026-01-06",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-07",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.48,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAXG17",
+      "product_name": "华夏资本龙跃慧盈122号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-07-08",
+      "start_obs_date": "2025-07-16",
+      "end_obs_date": "2025-09-30",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-08",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.52,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAF94",
+      "product_name": "华夏资本龙跃慧盈68号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-07-08",
+      "start_obs_date": "2025-07-16",
+      "end_obs_date": "2025-09-30",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-10-08",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.42,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAF96",
+      "product_name": "华夏资本龙跃慧盈67号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-07-08",
+      "start_obs_date": "2025-07-16",
+      "end_obs_date": "2025-09-30",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-10-08",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.96,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.03,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAF86",
+      "product_name": "华夏资本龙跃慧盈118号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-07-03",
+      "start_obs_date": "2025-07-11",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.54,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAF87",
+      "product_name": "华夏资本龙跃慧盈47号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-07-03",
+      "start_obs_date": "2025-07-11",
+      "end_obs_date": "2026-12-31",
+      "early_maturity_date": "2025-10-14",
+      "contract_maturity_date": "2027-01-03",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.02,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.038,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2025-10-14"
+      }
+    },
+    {
+      "product_code": "SBAF88",
+      "product_name": "华夏资本龙跃慧盈46号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-07-03",
+      "start_obs_date": "2025-07-11",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.44,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.013000000000000001,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAF91",
+      "product_name": "华夏资本龙跃慧盈45号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-07-03",
+      "start_obs_date": "2025-07-11",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.44,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.013000000000000001,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SBAC45",
+      "product_name": "华夏资本龙跃慧盈43号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "恒生科技ETF指数",
+      "underlying_price": null,
+      "establish_date": "2025-07-04",
+      "start_obs_date": "2025-07-16",
+      "end_obs_date": "2025-10-14",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-10-15",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.15,
+        "down_barrier_pct": null,
+        "participation_rate": 0.2,
+        "min_return_pct": 0.012,
+        "knockout_base_pct": 0.0165,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAZY47",
+      "product_name": "华夏资本龙跃慧盈66号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-07-07",
+      "start_obs_date": "2025-07-16",
+      "end_obs_date": "2025-12-23",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2026-01-07",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.59,
+        "min_return_pct": 0.005,
+        "knockout_base_pct": 0.0235,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAYN79",
+      "product_name": "华夏资本龙跃慧盈64号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-06-17",
+      "start_obs_date": "2025-06-24",
+      "end_obs_date": "2025-09-16",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-17",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAZP20",
+      "product_name": "华夏资本龙跃慧盈116号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2025-06-13",
+      "start_obs_date": "2025-06-20",
+      "end_obs_date": "2025-12-12",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-13",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.54,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAYV16",
+      "product_name": "华夏资本龙跃慧盈115号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金AU9999",
+      "underlying_price": null,
+      "establish_date": "2025-05-29",
+      "start_obs_date": "2025-06-09",
+      "end_obs_date": "2025-11-28",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-11-29",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.465,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAYN77",
+      "product_name": "华夏资本龙跃慧盈62号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-06-06",
+      "start_obs_date": "2025-06-13",
+      "end_obs_date": "2025-09-05",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-06",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.63,
+        "min_return_pct": 0.014499999999999999,
+        "knockout_base_pct": 0.014499999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAYN76",
+      "product_name": "华夏资本龙跃慧盈61号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金",
+      "underlying_price": null,
+      "establish_date": "2025-06-06",
+      "start_obs_date": "2025-06-13",
+      "end_obs_date": "2025-12-05",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-12-06",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAWT19",
+      "product_name": "华夏资本龙跃慧盈59号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-05-26",
+      "start_obs_date": "2025-06-03",
+      "end_obs_date": "2026-11-25",
+      "early_maturity_date": "2025-09-04",
+      "contract_maturity_date": "2026-11-26",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1,
+        "up_barrier_pct": 1,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.032,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2025-09-04"
+      }
+    },
+    {
+      "product_code": "SAXG16",
+      "product_name": "华夏资本龙跃慧盈121号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-04-23",
+      "start_obs_date": "2025-05-07",
+      "end_obs_date": "2025-10-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-10-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.5,
+        "min_return_pct": 0.018500000000000003,
+        "knockout_base_pct": 0.018500000000000003,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAWT16",
+      "product_name": "华夏资本龙跃慧盈58号",
+      "product_type_raw": "固收+三元",
+      "product_type": "three_element",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-05-12",
+      "start_obs_date": "2025-05-19",
+      "end_obs_date": "2026-11-11",
+      "early_maturity_date": "2025-08-20",
+      "contract_maturity_date": "2026-11-12",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.03,
+        "up_barrier_pct": 1.03,
+        "down_barrier_pct": 0.8,
+        "participation_rate": null,
+        "min_return_pct": 0,
+        "knockout_base_pct": 0.038,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": true,
+        "knockout_occur_date": "2025-08-20"
+      }
+    },
+    {
+      "product_code": "SAWT14",
+      "product_name": "华夏资本龙跃慧盈57号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金+中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-04-18",
+      "start_obs_date": "2025-04-28",
+      "end_obs_date": "2025-10-16",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-10-18",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4,
+        "min_return_pct": 0.013999999999999999,
+        "knockout_base_pct": 0.013999999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAVQ71",
+      "product_name": "华夏资本龙跃慧盈55号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-04-08",
+      "start_obs_date": "2025-04-15",
+      "end_obs_date": "2025-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.05,
+        "up_barrier_pct": 1.18,
+        "down_barrier_pct": null,
+        "participation_rate": 0.36,
+        "min_return_pct": 0.013500000000000002,
+        "knockout_base_pct": 0.013500000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAWB44",
+      "product_name": "华夏资本龙跃慧盈42号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-04-08",
+      "start_obs_date": "2025-04-15",
+      "end_obs_date": "2025-07-16",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.44,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.013000000000000001,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAVQ70",
+      "product_name": "华夏资本龙跃慧盈54号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-04-03",
+      "start_obs_date": "2025-04-11",
+      "end_obs_date": "2025-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.05,
+        "up_barrier_pct": 1.18,
+        "down_barrier_pct": null,
+        "participation_rate": 0.19,
+        "min_return_pct": 0.014499999999999999,
+        "knockout_base_pct": 0.014499999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAQF87",
+      "product_name": "华夏资本龙跃慧盈110号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-04-10",
+      "start_obs_date": "2025-04-18",
+      "end_obs_date": "2025-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.08,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4,
+        "min_return_pct": 0.018500000000000003,
+        "knockout_base_pct": 0.018500000000000003,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAQF86",
+      "product_name": "华夏资本龙跃慧盈109号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-04-10",
+      "start_obs_date": "2025-04-18",
+      "end_obs_date": "2025-07-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.55,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAVQ69",
+      "product_name": "华夏资本龙跃慧盈53号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000",
+      "underlying_price": null,
+      "establish_date": "2025-04-08",
+      "start_obs_date": "2025-04-15",
+      "end_obs_date": "2025-09-29",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.12,
+        "down_barrier_pct": null,
+        "participation_rate": 0.4,
+        "min_return_pct": 0.013999999999999999,
+        "knockout_base_pct": 0.013999999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAVQ67",
+      "product_name": "华夏资本龙跃慧盈52号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "黄金+恒生科技指数",
+      "underlying_price": null,
+      "establish_date": "2025-04-09",
+      "start_obs_date": "2025-04-17",
+      "end_obs_date": "2025-07-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.7,
+        "min_return_pct": 0.013000000000000001,
+        "knockout_base_pct": 0.013000000000000001,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAVQ66",
+      "product_name": "华夏资本龙跃慧盈51号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-04-08",
+      "start_obs_date": "2025-04-15",
+      "end_obs_date": "2025-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.05,
+        "up_barrier_pct": 1.18,
+        "down_barrier_pct": null,
+        "participation_rate": 0.12,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SATN79",
+      "product_name": "华夏资本龙跃慧盈40号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-04-03",
+      "start_obs_date": "2025-04-11",
+      "end_obs_date": "2025-09-22",
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-09-24",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.05,
+        "up_barrier_pct": 1.18,
+        "down_barrier_pct": null,
+        "participation_rate": 0.36,
+        "min_return_pct": 0.013500000000000002,
+        "knockout_base_pct": 0.013500000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SATN78",
+      "product_name": "华夏资本龙跃慧盈39号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）和中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-03-19",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.51,
+        "min_return_pct": 0.014499999999999999,
+        "knockout_base_pct": 0.014499999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SATN77",
+      "product_name": "华夏资本龙跃慧盈38号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）和恒生科技指数",
+      "underlying_price": null,
+      "establish_date": "2025-03-10",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.51,
+        "min_return_pct": 0.014499999999999999,
+        "knockout_base_pct": 0.014499999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SATN74",
+      "product_name": "华夏资本龙跃慧盈37号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）和中证1000指数",
+      "underlying_price": null,
+      "establish_date": "2025-02-21",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.52,
+        "min_return_pct": 0.014499999999999999,
+        "knockout_base_pct": 0.014499999999999999,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SAQF84",
+      "product_name": "华夏资本龙跃慧盈108号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-02-11",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.38,
+        "min_return_pct": 0.018000000000000002,
+        "knockout_base_pct": 0.018000000000000002,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SATM40",
+      "product_name": "华夏资本龙跃慧盈36号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）",
+      "underlying_price": null,
+      "establish_date": "2025-02-11",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.5,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    },
+    {
+      "product_code": "SARJ55",
+      "product_name": "华夏资本龙跃慧盈35号",
+      "product_type_raw": "固收+单鲨",
+      "product_type": "single_shark",
+      "underlying": "SGE黄金9999（代码：AU9999.SGE）和中证1000指数（交易代码为：000852.SH）",
+      "underlying_price": null,
+      "establish_date": "2025-01-16",
+      "start_obs_date": null,
+      "end_obs_date": null,
+      "early_maturity_date": null,
+      "contract_maturity_date": "2025-06-23",
+      "performance_base": null,
+      "estimated_base": null,
+      "actual_final_return": null,
+      "structure_params": {
+        "strike_pct": 1.02,
+        "up_barrier_pct": 1.07,
+        "down_barrier_pct": null,
+        "participation_rate": 0.45,
+        "min_return_pct": 0.015,
+        "knockout_base_pct": 0.015,
+        "knock_out_obs_dates": [],
+        "obs_manual_confirm": false
+      },
+      "event_record": {
+        "is_early_terminate": false,
+        "knockout_occur_date": null
+      }
+    }
+  ],
   "underlyings": {
-    "黄金": {"code": "AU9999", "market": "sge"},
-    "中证1000": {"code": "000852", "market": "cn_index"},
-    "中证500": {"code": "000905", "market": "cn_index"},
-    "沪深300": {"code": "000300", "market": "cn_index"}
+    "黄金": {
+      "code": "AU9999",
+      "market": "sge"
+    },
+    "中证1000": {
+      "code": "000852",
+      "market": "cn_index"
+    },
+    "中证500": {
+      "code": "000905",
+      "market": "cn_index"
+    },
+    "沪深300": {
+      "code": "000300",
+      "market": "cn_index"
+    },
+    "白银期货（交易代码：AG2702）": {
+      "code": "AG2702"
+    },
+    "中证1000指数（代码：000852.SH）": {
+      "code": "000852"
+    },
+    "科创50ETF（交易代码：588000.SH）": {
+      "code": "588000"
+    },
+    "SGE黄金9999（交易代码：AU9999.SGE）": {
+      "code": "AU9999"
+    },
+    "创业板ETF（交易代码：159915.SZ）": {
+      "code": "159915"
+    },
+    "科创50（588000.SH）": {
+      "code": "588000"
+    },
+    "黄金AU9999": {
+      "code": "AU9999"
+    },
+    "碳酸锂期货": {
+      "code": "LC2701"
+    },
+    "沪铜期货": {
+      "code": "CU2702"
+    },
+    "沪银期货（AG2612.SHF）": {
+      "code": "AG2612"
+    }
   }
 }
