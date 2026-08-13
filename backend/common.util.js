@@ -35,7 +35,7 @@ export function formatDate(raw) {
 }
 
 /**
- * 从混合文本提取日期（支持Excel序列号、纯日期、带文字日期）
+ * 从混合文本提取日期（支持Excel序列号、纯日期、带文字日期、中文日期）
  */
 export function extractDate(raw) {
   const clean = emptyFilter(raw);
@@ -50,7 +50,15 @@ export function extractDate(raw) {
     }
   }
   
-  // 提取文本中的日期数字
+  // 中文日期格式：YYYY年MM月DD日
+  const cnMatch = clean.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
+  if (cnMatch) {
+    const y = cnMatch[1], m = cnMatch[2].padStart(2,'0'), d = cnMatch[3].padStart(2,'0');
+    const dt = new Date(`${y}-${m}-${d}`);
+    if (!isNaN(dt.getTime())) return `${y}-${m}-${d}`;
+  }
+  
+  // 提取文本中的日期数字 YYYY-MM-DD 或 YYYY/MM/DD
   const m = clean.match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
   if (m) {
     const d = new Date(`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`);
