@@ -383,7 +383,10 @@
   }
 
   // 初始化加载
-  await loadProducts();
+  loadProducts().then(() => {
+    // 加载完成后加载行情
+    loadLatestPrices().then(() => renderTable());
+  });
 
   // ========== 标的配置 ==========
   // 获取标的akshare代码（优先级：用户配置 > 内置映射）
@@ -658,9 +661,6 @@
     alert('保存成功（业务逻辑对接excel.parser.js即可）');
     document.getElementById('detailModal').style.display = 'none';
   }
-
-  // 初始化：加载行情后渲染
-  loadLatestPrices().then(() => renderTable());
 </script>
 </body>
 </html>
