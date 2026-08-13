@@ -117,7 +117,7 @@
         <div class="row"><span class="label">到期日期：</span>${prod.contract_maturity_date || '--'}</div>
         <div class="row"><span class="label">期初基准观察日：</span>${prod.start_obs_date || '--'}</div>
         <div class="row"><span class="label">期末结算观察日：</span>${prod.end_obs_date || '--'}</div>
-        <div class="row"><span class="label">提前敲出终止日：</span>${prod.early_maturity_date || '未触发提前终止'}</div>
+        ${prod.product_type !== 'single_shark' ? `<div class="row"><span class="label">提前敲出终止日：</span>${prod.early_maturity_date || '未触发提前终止'}</div>` : ''}
       </div>
 
       <div class="section">
@@ -129,8 +129,8 @@
         <div class="row"><span class="label">上涨敲出障碍价：</span>${p.up_barrier_pct ? (p.up_barrier_pct*100).toFixed(2)+'%' : '--'}</div>
         <div class="row"><span class="label">下跌敲入障碍价：</span>${p.down_barrier_pct ? (p.down_barrier_pct*100).toFixed(2)+'%' : '--'}</div>
         <div class="row"><span class="label">上涨收益参与率：</span>${p.participation_rate ? (p.participation_rate*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">保底约定年化收益率：</span>${p.min_return_pct ? (p.min_return_pct*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">敲出触发约定年化：</span>${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">未行权基准：</span>${p.min_return_pct ? (p.min_return_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">敲出基准：</span>${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</div>
       </div>
 
       <div class="section">

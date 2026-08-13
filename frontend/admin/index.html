@@ -259,11 +259,11 @@
         <input type="number" id="inp_participation" step="0.01">
       </div>
       <div class="form-item">
-        <label>保底年化收益率(%)</label>
+        <label>未行权基准(%)</label>
         <input type="number" id="inp_min_return" step="0.01">
       </div>
       <div class="form-item">
-        <label>敲出约定年化(%)</label>
+        <label>敲出基准(%)</label>
         <input type="number" id="inp_knockout" step="0.01">
       </div>
     </div>
@@ -633,6 +633,14 @@
     document.getElementById('inp_start_obs').value = prod.start_obs_date || '';
     document.getElementById('inp_end_obs').value = prod.end_obs_date || '';
     document.getElementById('inp_early_end').value = prod.early_maturity_date || '';
+    // 鲨鱼鳍结构不支持提前敲出终止日
+    const earlyEndInput = document.getElementById('inp_early_end');
+    if (prod.product_type === 'single_shark') {
+      earlyEndInput.disabled = true;
+      earlyEndInput.value = '';
+    } else {
+      earlyEndInput.disabled = false;
+    }
 
     const sp = prod.structure_params;
     document.getElementById('inp_strike').value = sp.strike_pct ? (sp.strike_pct * 100) : '';
