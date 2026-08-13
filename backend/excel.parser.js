@@ -2,7 +2,9 @@ import { PRODUCT_TYPE_MAP } from "./constant.js";
 import {
   emptyFilter,
   parsePercentStr,
-  formatDate
+  formatDate,
+  extractDate,
+  parseMaturity
 } from "./common.util.js";
 
 /**
@@ -27,10 +29,11 @@ export function parseExcelRow(row) {
 
   // 日期
   const establish_date = formatDate(row["产品成立日"]);
-  const start_obs_date = formatDate(row["期初观察日"]);
-  const end_obs_date = formatDate(row["期末观察日"]);
-  const early_maturity_date = formatDate(row["产品提前终止日"]);
-  const contract_maturity_date = formatDate(row["合同到期日"]);
+  const start_obs_date = extractDate(row["期初观察日"]);
+  const end_obs_date = extractDate(row["期末观察日"]);
+  const early_maturity_date = extractDate(row["产品提前终止日"]);
+  const contract_maturity_date = parseMaturity(row["固收+期权结构期限"], establish_date) 
+    || extractDate(row["合同到期日"]);
 
   // 类型映射
   const product_type = PRODUCT_TYPE_MAP[product_type_raw] ?? null;

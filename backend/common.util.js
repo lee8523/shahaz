@@ -35,6 +35,60 @@ export function formatDate(raw) {
 }
 
 /**
+ * 从混合文本提取日期（支持Excel序列号、纯日期、带文字日期）
+ */
+export function extractDate(raw) {
+  const clean = emptyFilter(raw);
+  if (!clean) return null;
+  
+  // Excel序列号（数字）
+  if (/^\d+(\.\d+)?$/.test(clean)) {
+    const serial = parseFloat(clean);
+    const d = new Date(Date.UTC(1899, 11, 30) + serial * 86400000);
+    if (!isNaN(d.getTime())) {
+      return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;
+    }
+  }
+  
+  // 提取文本中的日期数字
+  const m = clean.match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+  if (m) {
+    const d = new Date(`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`);
+    if (!isNaN(d.getTime())) return `${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;
+  }
+  
+  return formatDate(clean);
+}
+
+/**
+ * 解析期限字段：支持"XX个月"/"XX年"或日期
+ */
+export function parseMaturity(term, establishDate) {
+  const clean = emptyFilter(term);
+  if (!clean) return null;
+  
+  const date = extractDate(clean);
+  if (date) return date;
+  
+  if (!establishDate) return null;
+  const base = new Date(establishDate);
+  
+  const monthMatch = clean.match(/(\d+)\s*个月/);
+  if (monthMatch) {
+    base.setMonth(base.getMonth() + parseInt(monthMatch[1]));
+    return `${base.getFullYear()}-${String(base.getMonth()+1).padStart(2,'0')}-${String(base.getDate()).padStart(2,'0')}`;
+  }
+  
+  const yearMatch = clean.match(/(\d+)\s*年/);
+  if (yearMatch) {
+    base.setFullYear(base.getFullYear() + parseInt(yearMatch[1]));
+    return `${base.getFullYear()}-${String(base.getMonth()+1).padStart(2,'0')}-${String(base.getDate()).padStart(2,'0')}`;
+  }
+  
+  return null;
+}
+
+/**
  * 百分比格式化展示 0.04 => 4.00%
  */
 export function formatPercentShow(num) {
