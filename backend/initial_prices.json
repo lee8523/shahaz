@@ -303,5 +303,25 @@
     "price": 5914.029,
     "date": "2025-04-15",
     "underlying": "中证1000"
+  },
+  "SBRL04": {
+    "price": 7769.82,
+    "date": "2026-08-14",
+    "underlying": "中证1000指数（代码：000852.SH）"
+  },
+  "SBTQ96": {
+    "price": 1042.3,
+    "date": "2026-04-13",
+    "underlying": "黄金AU9999"
+  },
+  "SBTA40": {
+    "price": 1008.75,
+    "date": "2026-03-30",
+    "underlying": "黄金AU9999"
+  },
+  "SBRH97": {
+    "price": 1146.45,
+    "date": "2026-03-12",
+    "underlying": "黄金AU9999"
   }
 }
