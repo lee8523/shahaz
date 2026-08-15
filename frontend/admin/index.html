@@ -113,6 +113,7 @@
     <h2>期权结构化产品台账管理</h2>
     <div>
       <button class="btn btn-primary" id="importBtn">Excel批量导入</button>
+      <button class="btn" id="normalizeBtn" style="background:#e6f7ff;border:1px solid #91d5ff;margin-left:8px">标准化标的名称</button>
       <button class="btn" id="exportBtn" style="background:#f0f2f5;margin-left:8px">导出备份</button>
       <input type="password" id="githubToken" placeholder="GitHub PAT" style="width:180px;margin-left:16px;padding:6px 10px;border:1px solid #d9d9d9;border-radius:4px">
       <button class="btn" id="saveToken" style="background:#f0f2f5;margin-left:8px">保存Token</button>
@@ -299,10 +300,11 @@
     formatPriceShow,
     getEstimatedDisplay,
     formatUnderlying,
-    formatProductName
+    formatProductName,
+    normalizeUnderlying
   } from "../../backend/common.util.js";
   import { TYPE_LABEL, BUILTIN_UNDERLYING_CODES } from "../../backend/constant.js";
-  import { batchParseExcel } from "../../backend/excel.parser.js";
+  import { batchParseExcel, parseExcelRow } from "../../backend/excel.parser.js";
 
   // 全局产品数据
   let productList = [];
@@ -408,13 +410,19 @@
     // 提取所有唯一标的名称
     const underlyingNames = [...new Set(productList.map(p => p.underlying).filter(Boolean))];
     
-    // 找出未配置的标的
-    const unconfigured = underlyingNames.filter(name => !getUnderlyingCode(name));
+    // 找出未配置的标的（考虑标准化后的名称）
+    const unconfigured = underlyingNames.filter(name => {
+      // 先直接检查
+      if (getUnderlyingCode(name)) return false;
+      // 再尝试标准化后检查
+      const normalized = normalizeUnderlying(name);
+      if (normalized.standard && getUnderlyingCode(normalized.standard)) return false;
+      return true;
+    });
     
     if (unconfigured.length === 0) return true;
     
     // 弹窗让用户填写
-    let configStr = '以下标的需要配置akshare代码，请逐个输入（取消则跳过）：\n\n';
     for (const name of unconfigured) {
       const code = prompt(`标的"${name}"的akshare代码：`, '');
       if (code === null) return false; // 用户取消
@@ -508,6 +516,29 @@
     const existCodes = new Set(productList.map(p => p.product_code));
     const result = batchParseExcel(rows, existCodes, repeatMode);
     
+    // 处理需要补全合约代码的行
+    if (result.confirmList && result.confirmList.length > 0) {
+      const confirmed = await promptUnderlyingConfirm(result.confirmList);
+      if (!confirmed) {
+        // 用户取消，中止导入
+        return;
+      }
+      // 将补全后的行重新解析并加入 successList
+      for (const item of result.confirmList) {
+        const contractCode = confirmed[item.rawName];
+        if (contractCode) {
+          // 构造标准化标的名称
+          const standardUnderlying = item.variety + contractCode;
+          // 重新解析该行
+          item.row["挂钩标的"] = standardUnderlying;
+          const reparsed = parseExcelRow(item.row);
+          if (reparsed.valid) {
+            result.successList.push(reparsed.data);
+          }
+        }
+      }
+    }
+    
     // 处理覆盖模式：替换已有产品
     if (repeatMode === 'cover') {
       result.successList.forEach(newProd => {
@@ -546,6 +577,59 @@
     renderTable();
     await saveToServer();
   }
+  
+  // 弹窗让用户补全合约代码
+  function promptUnderlyingConfirm(confirmList) {
+    return new Promise((resolve) => {
+      const uniqueRawNames = [...new Set(confirmList.map(c => c.rawName))];
+      let html = '<p style="margin-bottom:12px;color:#e67e22">以下标的需要补全合约代码：</p>';
+      
+      uniqueRawNames.forEach(rawName => {
+        const item = confirmList.find(c => c.rawName === rawName);
+        html += `
+          <div style="margin:8px 0;display:flex;align-items:center;gap:8px">
+            <span style="min-width:200px">${rawName}</span>
+            <span>→</span>
+            <span>${item.variety}</span>
+            <input type="text" class="confirm-contract" data-raw="${rawName}" 
+                   placeholder="合约代码（如2604）" style="width:120px">
+          </div>
+        `;
+      });
+      
+      html += `
+        <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
+          <button id="confirmCancel" class="btn-secondary">取消</button>
+          <button id="confirmOk" class="btn-primary">确认</button>
+        </div>
+      `;
+      
+      // 显示弹窗
+      const modal = document.getElementById('resultModal');
+      const content = modal.querySelector('.modal-content');
+      content.innerHTML = `<h3>补全合约代码</h3>${html}`;
+      modal.style.display = 'flex';
+      
+      document.getElementById('confirmCancel').onclick = () => {
+        modal.style.display = 'none';
+        resolve(null);
+      };
+      
+      document.getElementById('confirmOk').onclick = () => {
+        const inputs = modal.querySelectorAll('.confirm-contract');
+        const result = {};
+        inputs.forEach(input => {
+          const raw = input.dataset.raw;
+          const code = input.value.trim();
+          if (code) {
+            result[raw] = code;
+          }
+        });
+        modal.style.display = 'none';
+        resolve(result);
+      };
+    });
+  }
 
   // 结果弹窗关闭
   document.getElementById('resultClose').onclick = () => {
@@ -562,6 +646,48 @@
     a.download = 'products.json';
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  // 标准化标的名称按钮
+  document.getElementById('normalizeBtn').onclick = async () => {
+    let changedCount = 0;
+    const needConfirmList = [];
+    
+    productList.forEach(prod => {
+      if (!prod.underlying) return;
+      
+      const result = normalizeUnderlying(prod.underlying);
+      
+      if (result.needConfirm) {
+        needConfirmList.push({ product: prod, variety: result.variety, rawName: result.rawName });
+        return;
+      }
+      
+      if (result.standard && result.standard !== prod.underlying) {
+        prod.underlying = result.standard;
+        changedCount++;
+      }
+    });
+    
+    // 如果有需要补全的标的，弹窗提示
+    if (needConfirmList.length > 0) {
+      const uniqueVarieties = [...new Set(needConfirmList.map(item => item.variety))];
+      alert(`有 ${needConfirmList.length} 个产品的标的需要补全合约代码：\n${uniqueVarieties.join('、')}\n\n请手动编辑这些产品的标的名称。`);
+    }
+    
+    if (changedCount === 0 && needConfirmList.length === 0) {
+      alert('所有标的名称已是标准格式，无需转换。');
+      return;
+    }
+    
+    // 更新 productsData
+    productsData.products = productList;
+    
+    // 保存
+    await saveToServer();
+    renderTable();
+    
+    alert(`标准化完成！共转换 ${changedCount} 个标的名称。${needConfirmList.length > 0 ? '另有 ' + needConfirmList.length + ' 个需要手动补全。' : ''}`);
   };
 
   // 渲染表格

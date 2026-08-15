@@ -4,7 +4,8 @@ import {
   parsePercentStr,
   formatDate,
   extractDate,
-  parseMaturity
+  parseMaturity,
+  normalizeUnderlying
 } from "./common.util.js";
 
 /**
@@ -17,7 +18,27 @@ export function parseExcelRow(row) {
   const product_code = emptyFilter(row["产品代码"]);
   const product_name = emptyFilter(row["产品简称"]);
   const product_type_raw = emptyFilter(row["固收+期权产品类型"]);
-  const underlying = emptyFilter(row["挂钩标的"]);
+  const underlying_raw = emptyFilter(row["挂钩标的"]);
+  
+  // 标的标准化
+  const underlyingResult = normalizeUnderlying(underlying_raw);
+  
+  // 如果需要用户补全合约代码，返回特殊标记
+  if (underlyingResult.needConfirm) {
+    return { 
+      valid: false, 
+      errors: [], 
+      data: null,
+      needConfirm: true,
+      confirmInfo: {
+        rawName: underlyingResult.rawName,
+        variety: underlyingResult.variety,
+        row: row
+      }
+    };
+  }
+  
+  const underlying = underlyingResult.standard || underlying_raw;
 
   // 结构参数解析
   const strike_pct = parsePercentStr(row["行权价格"]);
@@ -104,11 +125,19 @@ export function batchParseExcel(rows, existCodes, repeatMode = "cover") {
   const result = {
     successList: [],
     failList: [],
-    repeatList: []
+    repeatList: [],
+    confirmList: [] // 需要用户补全合约代码的行
   };
 
   for (const row of rows) {
     const res = parseExcelRow(row);
+    
+    // 需要用户补全合约代码
+    if (res.needConfirm) {
+      result.confirmList.push(res.confirmInfo);
+      continue;
+    }
+    
     if (!res.valid) {
       result.failList.push({ row, errors: res.errors });
       continue;
