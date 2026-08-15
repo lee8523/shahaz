@@ -2,8 +2,50 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>产品信息公示（投资人查看）</title>
-  <link rel="stylesheet" href="investor.css">
+  <style>
+    :root {
+      --primary:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#f59e0b;
+      --g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+      --g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;
+      --g800:#1e293b;--g900:#0f172a;
+      --r:8px;--sh:0 1px 3px rgba(0,0,0,.08);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--g50);color:var(--g800);line-height:1.6;min-height:100vh;padding:24px}
+    .wrap{max-width:900px;margin:0 auto}
+    h1{font-size:22px;font-weight:600;color:var(--g900);margin-bottom:20px;text-align:center}
+    .card{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:28px;margin-bottom:20px}
+    .section{margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--g100)}
+    .section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .section h3{font-size:16px;font-weight:600;color:var(--g700);margin-bottom:14px;padding-left:10px;border-left:3px solid var(--primary)}
+    .row{display:flex;padding:8px 0;font-size:14px}
+    .label{color:var(--g500);width:160px;flex-shrink:0}
+    .value{color:var(--g800);font-weight:500}
+    .tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500}
+    .tag-green{background:#dcfce7;color:#166534}
+    .tag-red{background:#fee2e2;color:#991b1b}
+    .tag-yellow{background:#fef3c7;color:#92400e}
+    .tag-gray{background:var(--g100);color:var(--g500)}
+    .risk-tip{padding:14px 18px;background:#fff3e0;border-radius:var(--r);font-size:12px;color:#e65100}
+    
+    /* 障碍可视化样式 */
+    .barrier-viz{background:var(--g50);border-radius:var(--r);padding:24px;margin:16px 0}
+    .barrier-viz h4{font-size:14px;font-weight:600;color:var(--g700);margin-bottom:20px}
+    .barrier-track{position:relative;height:60px;margin:0 40px}
+    .barrier-track-bg{position:absolute;top:24px;left:0;right:0;height:8px;background:var(--g200);border-radius:4px}
+    .barrier-track-fill{position:absolute;top:24px;left:0;height:8px;border-radius:4px;transition:width .5s}
+    .barrier-line{position:absolute;top:12px;width:2px;height:40px;transform:translateX(-50%)}
+    .barrier-line::after{content:attr(data-label);position:absolute;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:var(--g500)}
+    /* 标签位置：上方 */
+    .barrier-line.label-top::after{bottom:calc(100% + 8px)}
+    /* 标签位置：下方 */
+    .barrier-line.label-bottom::after{top:calc(100% + 8px)}
+    .barrier-current{position:absolute;top:18px;width:18px;height:18px;border-radius:50%;background:var(--primary);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15);transform:translateX(-50%);z-index:2;transition:left .5s}
+    .barrier-labels{display:flex;justify-content:space-between;margin-top:16px;font-size:12px;color:var(--g500)}
+    .barrier-labels strong{color:var(--g800)}
+  </style>
 </head>
 <body>
 <div class="wrap">
@@ -13,7 +55,7 @@
   </div>
 
   <div class="risk-tip">
-    风险提示：当日估算年化收益仅为模型理论测算值，不构成任何收益承诺；最终兑付结果以产品合同约定及托管机构清算为准。
+    <strong>风险提示：</strong>当日估算年化收益仅为模型理论测算值，不构成任何收益承诺；最终兑付结果以产品合同约定及托管机构清算为准。
   </div>
 </div>
 
@@ -48,106 +90,213 @@
   // 加载数据
   async function loadData() {
     try {
-      // 加载产品数据
       const prodResp = await fetch('../../backend/products.json?t=' + Date.now());
-      if (prodResp.ok) {
-        productsData = await prodResp.json();
-      }
+      if (prodResp.ok) productsData = await prodResp.json();
 
-      // 加载当前价格
       const priceResp = await fetch('../../backend/prices.json?t=' + Date.now());
-      if (priceResp.ok) {
-        prices = await priceResp.json();
-      }
+      if (priceResp.ok) prices = await priceResp.json();
 
-      // 加载期初价格
       const initResp = await fetch('../../backend/initial_prices.json?t=' + Date.now());
-      if (initResp.ok) {
-        initialPrices = await initResp.json();
-      }
+      if (initResp.ok) initialPrices = await initResp.json();
 
-      // 查找当前产品
       if (productCode) {
         product = productsData.products.find(p => p.product_code === productCode) || {};
         
         if (!product.product_code) {
-          document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">未找到产品数据</p>';
+          document.getElementById('productCard').innerHTML = '<p style="color:#dc2626;text-align:center;padding:40px">未找到产品数据</p>';
           return false;
         }
 
-        // 更新当前价格
         const code = getUnderlyingCode(product.underlying);
         if (code && prices[code]?.price) {
           product.underlying_price = prices[code].price;
         }
 
-        // 更新期初价格
         if (initialPrices[product.product_code]?.price) {
           product.initial_price = initialPrices[product.product_code].price;
         }
       } else {
-        document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">缺少产品参数</p>';
+        document.getElementById('productCard').innerHTML = '<p style="color:#dc2626;text-align:center;padding:40px">缺少产品参数</p>';
         return false;
       }
     } catch(e) {
       console.warn('加载数据失败:', e);
-      document.getElementById('productCard').innerHTML = '<p style="color:#f53f3f;text-align:center;padding:40px">加载数据失败</p>';
+      document.getElementById('productCard').innerHTML = '<p style="color:#dc2626;text-align:center;padding:40px">加载数据失败</p>';
       return false;
     }
     return true;
   }
 
+  // 生成障碍可视化HTML
+  function renderBarrierViz(prod) {
+    const initPrice = prod.initial_price;
+    const currentPrice = prod.underlying_price;
+    const p = prod.structure_params;
+    
+    if (!initPrice || !currentPrice) return '';
+    
+    const lo = initPrice * 0.7;
+    const hi = initPrice * 1.3;
+    const range = hi - lo;
+    
+    // 计算各位置的百分比
+    const calcPct = (price) => Math.max(0, Math.min(100, (price - lo) / range * 100));
+    
+    const ipPct = calcPct(initPrice);
+    const cpPct = calcPct(currentPrice);
+    
+    let vizHtml = '';
+    
+    if (prod.product_type === 'three_element') {
+      // 三元：敲入/期初/敲出
+      const ki = p.down_barrier_pct ? initPrice * p.down_barrier_pct : null;
+      const ko = p.up_barrier_pct ? initPrice * p.up_barrier_pct : null;
+      
+      if (!ki || !ko) return '';
+      
+      const kiPct = calcPct(ki);
+      const koPct = calcPct(ko);
+      
+      // 确定标签位置（错开）
+      const kiLabel = kiPct < 50 ? 'label-top' : 'label-bottom';
+      const koLabel = koPct > 50 ? 'label-top' : 'label-bottom';
+      
+      let fillColor = '#16a34a';
+      if (currentPrice < ki) fillColor = '#dc2626';
+      else if (currentPrice > ko) fillColor = '#2563eb';
+      
+      vizHtml = `
+        <div class="barrier-viz">
+          <h4>障碍状态可视化</h4>
+          <div class="barrier-track">
+            <div class="barrier-track-bg"></div>
+            <div class="barrier-track-fill" style="width:${cpPct}%;background:${fillColor}"></div>
+            <div class="barrier-line ${kiLabel}" style="left:${kiPct}%;background:#dc2626" data-label="敲入 ${ki.toFixed(0)}"></div>
+            <div class="barrier-line label-top" style="left:${ipPct}%;background:#94a3b8" data-label="期初 ${initPrice.toFixed(0)}"></div>
+            <div class="barrier-line ${koLabel}" style="left:${koPct}%;background:#16a34a" data-label="敲出 ${ko.toFixed(0)}"></div>
+            <div class="barrier-current" style="left:${cpPct}%"></div>
+          </div>
+          <div class="barrier-labels">
+            <span style="color:#dc2626">敲入: ${ki.toFixed(2)}</span>
+            <span>现价: <strong>${currentPrice.toFixed(2)}</strong></span>
+            <span style="color:#16a34a">敲出: ${ko.toFixed(2)}</span>
+          </div>
+        </div>
+      `;
+    } else if (prod.product_type === 'single_shark' && p.up_barrier_pct) {
+      // 鲨鱼鳍：期初/障碍
+      const ub = initPrice * p.up_barrier_pct;
+      const ubPct = calcPct(ub);
+      
+      // 标签错开
+      const ubLabel = ubPct > 60 ? 'label-bottom' : 'label-top';
+      
+      let fillColor = '#2563eb';
+      if (currentPrice >= ub) fillColor = '#16a34a';
+      
+      vizHtml = `
+        <div class="barrier-viz">
+          <h4>障碍状态可视化</h4>
+          <div class="barrier-track">
+            <div class="barrier-track-bg"></div>
+            <div class="barrier-track-fill" style="width:${cpPct}%;background:${fillColor}"></div>
+            <div class="barrier-line label-bottom" style="left:${ipPct}%;background:#94a3b8" data-label="期初 ${initPrice.toFixed(0)}"></div>
+            <div class="barrier-line ${ubLabel}" style="left:${ubPct}%;background:#f59e0b" data-label="障碍 ${ub.toFixed(0)}"></div>
+            <div class="barrier-current" style="left:${cpPct}%"></div>
+          </div>
+          <div class="barrier-labels">
+            <span>期初: ${initPrice.toFixed(2)}</span>
+            <span>现价: <strong>${currentPrice.toFixed(2)}</strong></span>
+            <span style="color:#f59e0b">上涨障碍: ${ub.toFixed(2)}</span>
+          </div>
+        </div>
+      `;
+    } else if (prod.product_type === 'binary' && p.up_barrier_pct) {
+      // 二元：期初/敲出
+      const ko = initPrice * p.up_barrier_pct;
+      const koPct = calcPct(ko);
+      
+      const koLabel = koPct > 60 ? 'label-bottom' : 'label-top';
+      
+      let fillColor = '#2563eb';
+      if (currentPrice >= ko) fillColor = '#16a34a';
+      
+      vizHtml = `
+        <div class="barrier-viz">
+          <h4>障碍状态可视化</h4>
+          <div class="barrier-track">
+            <div class="barrier-track-bg"></div>
+            <div class="barrier-track-fill" style="width:${cpPct}%;background:${fillColor}"></div>
+            <div class="barrier-line label-bottom" style="left:${ipPct}%;background:#94a3b8" data-label="期初 ${initPrice.toFixed(0)}"></div>
+            <div class="barrier-line ${koLabel}" style="left:${koPct}%;background:#16a34a" data-label="敲出 ${ko.toFixed(0)}"></div>
+            <div class="barrier-current" style="left:${cpPct}%"></div>
+          </div>
+          <div class="barrier-labels">
+            <span>期初: ${initPrice.toFixed(2)}</span>
+            <span>现价: <strong>${currentPrice.toFixed(2)}</strong></span>
+            <span style="color:#16a34a">敲出: ${ko.toFixed(2)}</span>
+          </div>
+        </div>
+      `;
+    }
+    
+    return vizHtml;
+  }
+
   function renderInvestorPage(prod) {
     const statusInfo = getProductStatusInfo(prod, today);
     const card = document.getElementById('productCard');
+    const p = prod.structure_params;
+    const initPrice = prod.initial_price;
+    
+    // 计算各价格（基于期初价）
+    const strikePrice = (initPrice && p.strike_pct) ? (initPrice * p.strike_pct).toFixed(2) : null;
+    const upBarrierPrice = (initPrice && p.up_barrier_pct) ? (initPrice * p.up_barrier_pct).toFixed(2) : null;
+    const downBarrierPrice = (initPrice && p.down_barrier_pct) ? (initPrice * p.down_barrier_pct).toFixed(2) : null;
+    
     let html = `
       <div class="section">
         <h3>一、产品基础概况</h3>
-        <div class="row"><span class="label">产品代码：</span>${prod.product_code || '--'}</div>
-        <div class="row"><span class="label">产品名称：</span>${formatProductName(prod.product_name)}</div>
-        <div class="row"><span class="label">结构类型：</span>${TYPE_LABEL[prod.product_type] || '--'}</div>
-        <div class="row"><span class="label">挂钩标的：</span>${formatUnderlying(prod.underlying)}</div>
-        <div class="row"><span class="label">标的最新现价：</span>${formatPriceShow(prod.underlying_price)}</div>
-        <div class="row"><span class="label">标的期初价：</span>${formatPriceShow(prod.initial_price)}</div>
-        <div class="row"><span class="label">产品当前状态：</span><span class="${statusInfo.className}">${statusInfo.text}</span></div>
+        <div class="row"><span class="label">产品代码：</span><span class="value">${prod.product_code || '--'}</span></div>
+        <div class="row"><span class="label">产品名称：</span><span class="value">${formatProductName(prod.product_name)}</span></div>
+        <div class="row"><span class="label">结构类型：</span><span class="value">${TYPE_LABEL[prod.product_type] || '--'}</span></div>
+        <div class="row"><span class="label">挂钩标的：</span><span class="value">${formatUnderlying(prod.underlying)}</span></div>
+        <div class="row"><span class="label">标的最新现价：</span><span class="value">${formatPriceShow(prod.underlying_price)}</span></div>
+        <div class="row"><span class="label">标的期初价：</span><span class="value">${formatPriceShow(prod.initial_price)}</span></div>
+        <div class="row"><span class="label">产品当前状态：</span><span class="tag ${statusInfo.className}">${statusInfo.text}</span></div>
       </div>
 
       <div class="section">
         <h3>二、关键存续与观察日期</h3>
-        <div class="row"><span class="label">成立日期：</span>${prod.establish_date || '--'}</div>
-        <div class="row"><span class="label">到期日期：</span>${prod.contract_maturity_date || '--'}</div>
-        <div class="row"><span class="label">期初基准观察日：</span>${prod.start_obs_date || '--'}</div>
-        <div class="row"><span class="label">期末结算观察日：</span>${prod.end_obs_date || '--'}</div>
-        ${prod.product_type !== 'single_shark' ? `<div class="row"><span class="label">提前敲出终止日：</span>${prod.early_maturity_date || '未触发提前终止'}</div>` : ''}
+        <div class="row"><span class="label">成立日期：</span><span class="value">${prod.establish_date || '--'}</span></div>
+        <div class="row"><span class="label">到期日期：</span><span class="value">${prod.contract_maturity_date || '--'}</span></div>
+        <div class="row"><span class="label">期初基准观察日：</span><span class="value">${prod.start_obs_date || '--'}</span></div>
+        <div class="row"><span class="label">期末结算观察日：</span><span class="value">${prod.end_obs_date || '--'}</span></div>
+        ${prod.product_type !== 'single_shark' ? `<div class="row"><span class="label">提前敲出终止日：</span><span class="value">${prod.early_maturity_date || '未触发提前终止'}</span></div>` : ''}
       </div>
 
       <div class="section">
         <h3>三、期权收益结构约定参数</h3>
-    `;
-    const p = prod.structure_params;
-    const initPrice = prod.initial_price;
-    // 计算障碍价（基于期初价）
-    const upBarrierPrice = (initPrice && p.up_barrier_pct) ? (initPrice * p.up_barrier_pct).toFixed(2) : null;
-    const downBarrierPrice = (initPrice && p.down_barrier_pct) ? (initPrice * p.down_barrier_pct).toFixed(2) : null;
-    
-    html += `
-        <div class="row"><span class="label">行权价比例：</span>${p.strike_pct ? (p.strike_pct*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">上涨敲出障碍价：</span>${p.up_barrier_pct ? (p.up_barrier_pct*100).toFixed(2)+'%' : '--'}${upBarrierPrice ? '（' + upBarrierPrice + '）' : ''}</div>
-        <div class="row"><span class="label">下跌敲入障碍价：</span>${p.down_barrier_pct ? (p.down_barrier_pct*100).toFixed(2)+'%' : '--'}${downBarrierPrice ? '（' + downBarrierPrice + '）' : ''}</div>
-        <div class="row"><span class="label">上涨收益参与率：</span>${p.participation_rate ? (p.participation_rate*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">未行权基准：</span>${p.min_return_pct ? (p.min_return_pct*100).toFixed(2)+'%' : '--'}</div>
-        <div class="row"><span class="label">敲出基准：</span>${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</div>
+        <div class="row"><span class="label">行权价比例：</span><span class="value">${p.strike_pct ? (p.strike_pct*100).toFixed(2)+'%' : '--'}${strikePrice ? '（' + strikePrice + '）' : ''}</span></div>
+        <div class="row"><span class="label">上涨敲出障碍价：</span><span class="value">${p.up_barrier_pct ? (p.up_barrier_pct*100).toFixed(2)+'%' : '--'}${upBarrierPrice ? '（' + upBarrierPrice + '）' : ''}</span></div>
+        <div class="row"><span class="label">下跌敲入障碍价：</span><span class="value">${p.down_barrier_pct ? (p.down_barrier_pct*100).toFixed(2)+'%' : '--'}${downBarrierPrice ? '（' + downBarrierPrice + '）' : ''}</span></div>
+        <div class="row"><span class="label">上涨收益参与率：</span><span class="value">${p.participation_rate ? (p.participation_rate*100).toFixed(2)+'%' : '--'}</span></div>
+        <div class="row"><span class="label">未行权基准：</span><span class="value">${p.min_return_pct ? (p.min_return_pct*100).toFixed(2)+'%' : '--'}</span></div>
+        <div class="row"><span class="label">敲出基准：</span><span class="value">${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</span></div>
       </div>
+
+      ${renderBarrierViz(prod)}
 
       <div class="section">
         <h3>四、年化收益台账</h3>
     `;
+    
     if (prod.product_type !== 'three_element') {
-      const initialPrice = prod.initial_price;
-      html += `<div class="row"><span class="label">估算基准：</span>${getEstimatedDisplay(prod, initialPrice)}</div>`;
+      html += `<div class="row"><span class="label">估算基准：</span><span class="value">${getEstimatedDisplay(prod, initPrice)}</span></div>`;
     }
+    
     html += `
-        <div class="row"><span class="label">最终基准：</span>${formatPercentShow(prod.performance_base)}</div>
+        <div class="row"><span class="label">最终基准：</span><span class="value">${formatPercentShow(prod.performance_base)}</span></div>
       </div>
     `;
 

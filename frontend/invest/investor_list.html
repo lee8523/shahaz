@@ -2,50 +2,117 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>产品列表公示</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
-    .container { max-width: 1400px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 24px; }
-    h1 { font-size: 22px; margin-bottom: 20px; color: #333; }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e8e8e8; }
-    th { background: #fafafa; font-weight: 600; color: #666; }
-    tr:hover { background: #f5f5f5; cursor: pointer; }
-    .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-    .tag-green { background: #e8f5e9; color: #2e7d32; }
-    .tag-red { background: #ffebee; color: #c62828; }
-    .tag-yellow { background: #fff8e1; color: #f57f17; }
-    .tag-gray { background: #f5f5f5; color: #757575; }
-    .risk-tip { margin-top: 20px; padding: 12px; background: #fff3e0; border-radius: 4px; font-size: 12px; color: #e65100; }
-    #loading { text-align: center; padding: 40px; color: #999; }
+    :root {
+      --primary:#2563eb;--primary-dark:#1d4ed8;
+      --success:#16a34a;--danger:#dc2626;--warning:#f59e0b;
+      --g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+      --g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;
+      --g800:#1e293b;--g900:#0f172a;
+      --r:8px;--sh:0 1px 3px rgba(0,0,0,.08);--shm:0 4px 6px -1px rgba(0,0,0,.1);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--g50);color:var(--g800);line-height:1.6;min-height:100vh}
+    .header{background:#fff;border-bottom:1px solid var(--g200);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:var(--sh)}
+    .logo{font-size:18px;font-weight:600;color:var(--g900)}
+    .header-right{display:flex;align-items:center;gap:12px}
+    .update-time{font-size:13px;color:var(--g400)}
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:20px 24px}
+    .stat-card{background:#fff;border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh)}
+    .stat-label{font-size:13px;color:var(--g500);margin-bottom:4px}
+    .stat-value{font-size:28px;font-weight:700;color:var(--g900)}
+    .stat-active{color:var(--primary)}
+    .filter-bar{display:flex;gap:16px;padding:0 24px 16px;align-items:flex-end;flex-wrap:wrap}
+    .filter-group{display:flex;flex-direction:column;gap:4px}
+    .filter-group label{font-size:12px;color:var(--g500);font-weight:500}
+    .filter-group select,.filter-group input{padding:7px 12px;border:1px solid var(--g300);border-radius:var(--r);font-size:14px;background:#fff;color:var(--g700);min-width:150px;outline:none}
+    .filter-group select:focus,.filter-group input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+    .table-section{padding:0 24px 24px;overflow-x:auto}
+    .product-table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+    .product-table th{background:var(--g50);padding:10px 12px;text-align:left;font-size:12px;font-weight:600;color:var(--g500);border-bottom:1px solid var(--g200);cursor:pointer;user-select:none;white-space:nowrap}
+    .product-table th:hover{color:var(--primary)}
+    .product-table td{padding:10px 12px;font-size:13px;border-bottom:1px solid var(--g100);white-space:nowrap}
+    .product-table tbody tr{cursor:pointer;transition:background .2s}
+    .product-table tbody tr:hover{background:var(--g50)}
+    .empty-msg{text-align:center;color:var(--g400);padding:40px!important;font-size:15px}
+    .ret-pos{color:var(--danger);font-weight:600}
+    .ret-neg{color:var(--success);font-weight:600}
+    .ret-zero{color:var(--g400)}
+    .tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500}
+    .tag-green{background:#dcfce7;color:#166534}
+    .tag-red{background:#fee2e2;color:#991b1b}
+    .tag-yellow{background:#fef3c7;color:#92400e}
+    .tag-gray{background:var(--g100);color:var(--g500)}
+    .risk-tip{margin:0 24px 24px;padding:12px 16px;background:#fff3e0;border-radius:var(--r);font-size:12px;color:#e65100}
+    #loading{text-align:center;padding:60px;color:var(--g400);font-size:15px}
+    @media(max-width:768px){.stats-row{grid-template-columns:repeat(2,1fr);gap:10px;padding:12px 16px}.stat-value{font-size:22px}.filter-bar{padding:0 16px 12px}.table-section{padding:0 16px 16px}}
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>场外挂钩结构化产品列表公示</h1>
-  <div id="loading">加载中...</div>
-  <table id="productTable" style="display:none">
-    <thead>
-      <tr>
-        <th>产品代码</th>
-        <th>产品名称</th>
-        <th>结构类型</th>
-        <th>挂钩标的</th>
-        <th>标的现价</th>
-        <th>期初价</th>
-        <th>成立日</th>
-        <th>到期日</th>
-        <th>估算基准</th>
-        <th>最终基准</th>
-        <th>状态</th>
-      </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
-  <div class="risk-tip">
-    风险提示：估算基准仅为模型理论测算值，不构成任何收益承诺；最终兑付结果以产品合同约定及托管机构清算为准。
+
+<header class="header">
+  <h1 class="logo">场外挂钩结构化产品列表公示</h1>
+  <div class="header-right">
+    <span class="update-time" id="updateTime">--</span>
   </div>
+</header>
+
+<section class="stats-row">
+  <div class="stat-card"><div class="stat-label">产品总数</div><div class="stat-value" id="statTotal">--</div></div>
+  <div class="stat-card"><div class="stat-label">存续中</div><div class="stat-value stat-active" id="statActive">--</div></div>
+  <div class="stat-card"><div class="stat-label">已到期</div><div class="stat-value" id="statMatured">--</div></div>
+</section>
+
+<section class="filter-bar">
+  <div class="filter-group"><label>产品类型</label>
+    <select id="filterType" onchange="applyFilters()">
+      <option value="">全部</option>
+      <option value="single_shark">鲨鱼鳍</option>
+      <option value="binary">二元</option>
+      <option value="three_element">三元</option>
+    </select>
+  </div>
+  <div class="filter-group"><label>挂钩标的</label>
+    <select id="filterUnderlying" onchange="applyFilters()">
+      <option value="">全部</option>
+    </select>
+  </div>
+  <div class="filter-group"><label>到期状态</label>
+    <select id="filterMatured" onchange="applyFilters()">
+      <option value="">全部</option>
+      <option value="active">存续中</option>
+      <option value="matured">已到期</option>
+    </select>
+  </div>
+  <div class="filter-group"><label>搜索</label>
+    <input type="text" id="filterSearch" placeholder="产品代码/名称" oninput="applyFilters()">
+  </div>
+</section>
+
+<section class="table-section">
+  <table class="product-table">
+    <thead><tr>
+      <th onclick="sortTable('product_code')">产品代码</th>
+      <th onclick="sortTable('product_name')">产品名称</th>
+      <th onclick="sortTable('product_type')">结构类型</th>
+      <th onclick="sortTable('underlying')">挂钩标的</th>
+      <th onclick="sortTable('underlying_price')">标的现价</th>
+      <th onclick="sortTable('initial_price')">期初价</th>
+      <th onclick="sortTable('establish_date')">成立日</th>
+      <th onclick="sortTable('contract_maturity_date')">到期日</th>
+      <th onclick="sortTable('estimated_return')">估算基准</th>
+      <th onclick="sortTable('performance_base')">最终基准</th>
+      <th onclick="sortTable('days_to_maturity')">剩余天数</th>
+      <th onclick="sortTable('status')">状态</th>
+    </tr></thead>
+    <tbody id="tableBody"><tr><td colspan="12" class="empty-msg">加载中...</td></tr></tbody>
+  </table>
+</section>
+
+<div class="risk-tip">
+  <strong>风险提示：</strong>估算基准仅为模型理论测算值，不构成任何收益承诺；最终兑付结果以产品合同约定及托管机构清算为准。
 </div>
 
 <script type="module">
@@ -55,13 +122,16 @@
     formatPriceShow,
     getEstimatedDisplay,
     formatUnderlying,
-    formatProductName
+    formatProductName,
+    isProductMatured
   } from "../../backend/common.util.js";
   import { TYPE_LABEL } from "../../backend/constant.js";
 
   let productsData = { products: [], underlyings: {} };
   let prices = {};
   let initialPrices = {};
+  let displayList = [];
+  let currentSort = { field: '', asc: true };
 
   // 获取标的akshare代码
   function getUnderlyingCode(name) {
@@ -72,75 +142,151 @@
   // 加载数据
   async function loadData() {
     try {
-      // 加载产品数据
       const prodResp = await fetch('../../backend/products.json?t=' + Date.now());
-      if (prodResp.ok) {
-        productsData = await prodResp.json();
-      }
+      if (prodResp.ok) productsData = await prodResp.json();
 
-      // 加载当前价格
       const priceResp = await fetch('../../backend/prices.json?t=' + Date.now());
-      if (priceResp.ok) {
-        prices = await priceResp.json();
-      }
+      if (priceResp.ok) prices = await priceResp.json();
 
-      // 加载期初价格
       const initResp = await fetch('../../backend/initial_prices.json?t=' + Date.now());
-      if (initResp.ok) {
-        initialPrices = await initResp.json();
-      }
+      if (initResp.ok) initialPrices = await initResp.json();
+
+      // 显示更新时间
+      const priceTime = Object.values(prices)[0]?.time;
+      if (priceTime) document.getElementById('updateTime').textContent = '价格更新: ' + priceTime;
     } catch(e) {
       console.warn('加载数据失败:', e);
     }
   }
 
-  // 渲染列表
-  function renderTable() {
-    const tbody = document.getElementById('tableBody');
+  // 计算剩余天数
+  function calcDaysToMaturity(maturityDate) {
+    if (!maturityDate) return null;
+    const today = new Date();
+    const mature = new Date(maturityDate);
+    const diff = Math.ceil((mature - today) / (1000 * 60 * 60 * 24));
+    return diff > 0 ? diff : null;
+  }
+
+  // 构建标的筛选器
+  function buildUnderlyingFilter() {
+    const names = [...new Set(productsData.products.map(p => formatUnderlying(p.underlying)))];
+    const sel = document.getElementById('filterUnderlying');
+    sel.innerHTML = '<option value="">全部</option>' + names.map(n => `<option value="${n}">${n}</option>`).join('');
+  }
+
+  // 应用筛选
+  function applyFilters() {
+    const type = document.getElementById('filterType').value;
+    const underlying = document.getElementById('filterUnderlying').value;
+    const maturedFilter = document.getElementById('filterMatured').value;
+    const search = document.getElementById('filterSearch').value.toLowerCase();
     const today = new Date().toISOString().split('T')[0];
-    
-    tbody.innerHTML = '';
-    
-    productsData.products.forEach(prod => {
-      // 更新当前价格
+
+    displayList = productsData.products.map(prod => {
+      // 更新价格
       const code = getUnderlyingCode(prod.underlying);
-      if (code && prices[code]?.price) {
-        prod.underlying_price = prices[code].price;
-      }
-      
-      // 更新期初价格
-      if (initialPrices[prod.product_code]?.price) {
-        prod.initial_price = initialPrices[prod.product_code].price;
-      }
+      if (code && prices[code]?.price) prod.underlying_price = prices[code].price;
+      if (initialPrices[prod.product_code]?.price) prod.initial_price = initialPrices[prod.product_code].price;
       
       const statusObj = getProductStatusInfo(prod, today);
-      const tr = document.createElement('tr');
-      tr.onclick = () => {
-        window.location.href = `investor_view.html?code=${prod.product_code}`;
+      const matured = isProductMatured(prod, today);
+      
+      return {
+        ...prod,
+        underlying_display: formatUnderlying(prod.underlying),
+        initial_price: initialPrices[prod.product_code]?.price || null,
+        estimated_return: getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price),
+        days_to_maturity: calcDaysToMaturity(prod.contract_maturity_date),
+        status: statusObj.text,
+        status_class: statusObj.className,
+        is_matured: matured
       };
-      tr.innerHTML = `
-        <td>${prod.product_code}</td>
-        <td>${formatProductName(prod.product_name)}</td>
-        <td>${TYPE_LABEL[prod.product_type] || '--'}</td>
-        <td>${formatUnderlying(prod.underlying)}</td>
-        <td>${formatPriceShow(prod.underlying_price)}</td>
-        <td>${formatPriceShow(initialPrices[prod.product_code]?.price)}</td>
-        <td>${prod.establish_date || '--'}</td>
-        <td>${prod.contract_maturity_date || '--'}</td>
-        <td>${getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price)}</td>
-        <td>${formatPercentShow(prod.performance_base)}</td>
-        <td><span class="${statusObj.className}">${statusObj.text}</span></td>
-      `;
-      tbody.appendChild(tr);
+    }).filter(p => {
+      if (type && p.product_type !== type) return false;
+      if (underlying && p.underlying_display !== underlying) return false;
+      if (search && !(`${p.product_code} ${p.product_name}`.toLowerCase().includes(search))) return false;
+      if (maturedFilter === 'matured' && !p.is_matured) return false;
+      if (maturedFilter === 'active' && p.is_matured) return false;
+      return true;
     });
-    
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('productTable').style.display = 'table';
+
+    updateStats();
+    renderTable();
   }
+
+  // 更新统计
+  function updateStats() {
+    const today = new Date().toISOString().split('T')[0];
+    const all = productsData.products;
+    const total = all.length;
+    const matured = all.filter(p => isProductMatured(p, today)).length;
+    const active = total - matured;
+
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statActive').textContent = active;
+    document.getElementById('statMatured').textContent = matured;
+  }
+
+  // 渲染表格
+  function renderTable() {
+    const tbody = document.getElementById('tableBody');
+    if (!displayList.length) {
+      tbody.innerHTML = '<tr><td colspan="12" class="empty-msg">暂无匹配的产品</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = displayList.map(p => {
+      const estReturn = p.product_type === 'three_element' ? '--' : p.estimated_return;
+      const estClass = p.underlying_price > 0 ? (estReturn.includes('-') ? 'ret-neg' : (estReturn === '0.00%' ? 'ret-zero' : 'ret-pos')) : '';
+      
+      return `<tr onclick="location.href='investor_view.html?code=${p.product_code}'">
+        <td><strong>${p.product_code}</strong></td>
+        <td>${formatProductName(p.product_name)}</td>
+        <td>${TYPE_LABEL[p.product_type] || '--'}</td>
+        <td>${p.underlying_display}</td>
+        <td>${formatPriceShow(p.underlying_price)}</td>
+        <td>${formatPriceShow(p.initial_price)}</td>
+        <td>${p.establish_date || '--'}</td>
+        <td>${p.contract_maturity_date || '--'}</td>
+        <td class="${estClass}">${estReturn}</td>
+        <td>${formatPercentShow(p.performance_base)}</td>
+        <td>${p.days_to_maturity || '--'}</td>
+        <td><span class="tag ${p.status_class}">${p.status}</span></td>
+      </tr>`;
+    }).join('');
+  }
+
+  // 排序
+  function sortTable(field) {
+    if (currentSort.field === field) {
+      currentSort.asc = !currentSort.asc;
+    } else {
+      currentSort.field = field;
+      currentSort.asc = true;
+    }
+
+    displayList.sort((a, b) => {
+      let va = a[field], vb = b[field];
+      if (va === null || va === undefined) va = '';
+      if (vb === null || vb === undefined) vb = '';
+      if (typeof va === 'string') {
+        return currentSort.asc ? va.localeCompare(vb) : vb.localeCompare(va);
+      }
+      return currentSort.asc ? (va - vb) : (vb - va);
+    });
+
+    renderTable();
+  }
+
+  // 暴露排序函数到全局
+  window.sortTable = sortTable;
+  window.applyFilters = applyFilters;
 
   // 初始化
   await loadData();
-  renderTable();
+  buildUnderlyingFilter();
+  applyFilters();
 </script>
 </body>
 </html>
