@@ -708,7 +708,7 @@
         <td>${prod.contract_maturity_date || '--'}</td>
         <td>${prod.start_obs_date || '--'}</td>
         <td>${prod.end_obs_date || '--'}</td>
-        <td>${getEstimatedDisplay(prod)}</td>
+        <td>${getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price)}</td>
         <td>${formatPercentShow(prod.performance_base)}</td>
         <td><span class="${statusObj.className}">${statusObj.text}</span></td>
         <td>
@@ -786,7 +786,8 @@
 
     // 三元隐藏估算输入框
     const estInput = document.getElementById('inp_est');
-    estInput.value = getEstimatedDisplay(prod);
+    const initialPrice = initialPrices[prod.product_code]?.price;
+    estInput.value = getEstimatedDisplay(prod, initialPrice);
     document.getElementById('estRow').style.display = prod.product_type === 'three_element' ? 'none' : 'flex';
 
     document.getElementById('inp_final').value = formatPercentShow(prod.performance_base);

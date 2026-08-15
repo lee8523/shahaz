@@ -143,7 +143,8 @@
         <h3>四、年化收益台账</h3>
     `;
     if (prod.product_type !== 'three_element') {
-      html += `<div class="row"><span class="label">估算基准：</span>${getEstimatedDisplay(prod)}</div>`;
+      const initialPrice = prod.initial_price;
+      html += `<div class="row"><span class="label">估算基准：</span>${getEstimatedDisplay(prod, initialPrice)}</div>`;
     }
     html += `
         <div class="row"><span class="label">最终基准：</span>${formatPercentShow(prod.performance_base)}</div>

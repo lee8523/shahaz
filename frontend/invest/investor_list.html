@@ -127,7 +127,7 @@
         <td>${formatPriceShow(initialPrices[prod.product_code]?.price)}</td>
         <td>${prod.establish_date || '--'}</td>
         <td>${prod.contract_maturity_date || '--'}</td>
-        <td>${getEstimatedDisplay(prod)}</td>
+        <td>${getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price)}</td>
         <td>${formatPercentShow(prod.performance_base)}</td>
         <td><span class="${statusObj.className}">${statusObj.text}</span></td>
       `;

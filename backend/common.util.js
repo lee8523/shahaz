@@ -227,9 +227,52 @@ export function getProductStatusInfo(prod, todayStr) {
 }
 
 /**
- * 估算基准渲染规则：三元全部隐藏显示--
+ * 估算基准渲染规则：三元隐藏，其他根据当前价格实时计算
+ * @param {Object} prod 产品对象
+ * @param {number} initialPrice 期初价格（可选）
  */
-export function getEstimatedDisplay(prod) {
+export function getEstimatedDisplay(prod, initialPrice) {
   if (prod.product_type === "three_element") return "--";
-  return formatPercentShow(prod.estimated_base);
+  
+  // 如果没有期初价格或当前价格，返回已存储的值或--
+  if (!initialPrice || !prod.underlying_price) {
+    return formatPercentShow(prod.estimated_base);
+  }
+  
+  // 实时计算估算基准
+  const sRatio = prod.underlying_price / initialPrice;
+  const p = prod.structure_params;
+  
+  if (!p || p.min_return_pct === null || p.knockout_base_pct === null) {
+    return formatPercentShow(prod.estimated_base);
+  }
+  
+  const K = p.strike_pct;
+  const BU = p.up_barrier_pct;
+  const Rmin = p.min_return_pct;
+  const RKO = p.knockout_base_pct;
+  const P = p.participation_rate || 0;
+  
+  let result;
+  
+  switch (prod.product_type) {
+    case "single_shark":
+      if (sRatio >= BU) {
+        result = RKO;
+      } else if (sRatio >= K && sRatio < BU) {
+        result = Rmin + P * (sRatio - K);
+      } else {
+        result = Rmin;
+      }
+      break;
+      
+    case "binary":
+      result = sRatio >= BU ? RKO : Rmin;
+      break;
+      
+    default:
+      result = prod.estimated_base;
+  }
+  
+  return formatPercentShow(result);
 }
