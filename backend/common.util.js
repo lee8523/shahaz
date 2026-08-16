@@ -1,11 +1,11 @@
-import { PRODUCT_STATUS, UNDERLYING_FORMAT, UNDERLYING_VARIETY_MAP } from "./constant.js";
+import { PRODUCT_STATUS, BUILTIN_UNDERLYING_CODES, UNDERLYING_VARIETY_MAP } from "./constant.js";
 
 /**
- * 标的名称格式化（用于展示）
+ * 标的名称格式化（标准化后名称即展示名，直接返回）
  */
 export function formatUnderlying(name) {
   if (!name) return "--";
-  return UNDERLYING_FORMAT[name] || name;
+  return name;
 }
 
 /**

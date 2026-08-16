@@ -23,14 +23,8 @@ export const PRODUCT_STATUS = {
   PENDING_INPUT: "待录入兑付收益"
 };
 
-// 标的名称格式化映射（Excel原始值 -> 展示格式）
-export const UNDERLYING_FORMAT = {
-  "科创50": "科创50ETF（588000.SH）",
-  "黄金": "黄金AU9999（SGE）",
-  "中证1000": "中证1000（000852.SH）",
-  "中证500": "中证500（000905.SH）",
-  "沪深300": "沪深300（000300.SH）"
-};
+// 标的名称格式化映射（已废弃，标准化后名称即展示名）
+// formatUnderlying 函数现在直接返回原值
 
 // 内置标的名称 → akshare代码映射（优先级低于用户配置）
 export const BUILTIN_UNDERLYING_CODES = {

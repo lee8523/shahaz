@@ -653,6 +653,7 @@
     let changedCount = 0;
     const needConfirmList = [];
     
+    // 1. 标准化产品的 underlying 字段
     productList.forEach(prod => {
       if (!prod.underlying) return;
       
@@ -669,13 +670,35 @@
       }
     });
     
+    // 2. 标准化 underlyings 配置的 key
+    const oldUnderlyings = productsData.underlyings || {};
+    const newUnderlyings = {};
+    let underlyingsChanged = 0;
+    
+    for (const [oldKey, config] of Object.entries(oldUnderlyings)) {
+      const result = normalizeUnderlying(oldKey);
+      const newKey = result.standard || oldKey;
+      
+      if (newKey !== oldKey) {
+        underlyingsChanged++;
+      }
+      
+      // 如果新 key 已存在，保留已有的（不覆盖）
+      if (!newUnderlyings[newKey]) {
+        newUnderlyings[newKey] = config;
+      }
+    }
+    
+    productsData.underlyings = newUnderlyings;
+    
     // 如果有需要补全的标的，弹窗提示
     if (needConfirmList.length > 0) {
       const uniqueVarieties = [...new Set(needConfirmList.map(item => item.variety))];
       alert(`有 ${needConfirmList.length} 个产品的标的需要补全合约代码：\n${uniqueVarieties.join('、')}\n\n请手动编辑这些产品的标的名称。`);
     }
     
-    if (changedCount === 0 && needConfirmList.length === 0) {
+    const totalChanged = changedCount + underlyingsChanged;
+    if (totalChanged === 0 && needConfirmList.length === 0) {
       alert('所有标的名称已是标准格式，无需转换。');
       return;
     }
@@ -687,7 +710,11 @@
     await saveToServer();
     renderTable();
     
-    alert(`标准化完成！共转换 ${changedCount} 个标的名称。${needConfirmList.length > 0 ? '另有 ' + needConfirmList.length + ' 个需要手动补全。' : ''}`);
+    let msg = `标准化完成！`;
+    if (changedCount > 0) msg += `产品标的转换 ${changedCount} 个。`;
+    if (underlyingsChanged > 0) msg += `标的配置 key 转换 ${underlyingsChanged} 个。`;
+    if (needConfirmList.length > 0) msg += `另有 ${needConfirmList.length} 个需要手动补全。`;
+    alert(msg);
   };
 
   // 渲染表格

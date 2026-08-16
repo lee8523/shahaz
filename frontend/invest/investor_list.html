@@ -125,7 +125,7 @@
     formatProductName,
     isProductMatured
   } from "../../backend/common.util.js";
-  import { TYPE_LABEL } from "../../backend/constant.js";
+  import { TYPE_LABEL, BUILTIN_UNDERLYING_CODES } from "../../backend/constant.js";
 
   let productsData = { products: [], underlyings: {} };
   let prices = {};
@@ -136,6 +136,7 @@
   // 获取标的akshare代码
   function getUnderlyingCode(name) {
     if (productsData.underlyings[name]?.code) return productsData.underlyings[name].code;
+    if (BUILTIN_UNDERLYING_CODES[name]) return BUILTIN_UNDERLYING_CODES[name];
     return null;
   }
 

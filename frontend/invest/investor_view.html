@@ -68,7 +68,7 @@
     formatUnderlying,
     formatProductName
   } from "../../backend/common.util.js";
-  import { TYPE_LABEL } from "../../backend/constant.js";
+  import { TYPE_LABEL, BUILTIN_UNDERLYING_CODES } from "../../backend/constant.js";
 
   // 从 URL 读取 product_code 参数
   const urlParams = new URLSearchParams(window.location.search);
@@ -84,6 +84,7 @@
   // 获取标的akshare代码
   function getUnderlyingCode(name) {
     if (productsData.underlyings[name]?.code) return productsData.underlyings[name].code;
+    if (BUILTIN_UNDERLYING_CODES[name]) return BUILTIN_UNDERLYING_CODES[name];
     return null;
   }
 
