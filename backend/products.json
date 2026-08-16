@@ -756,7 +756,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "沪铝期货",
-      "underlying_price": null,
+      "underlying_price": 23845,
       "establish_date": "2026-04-29",
       "start_obs_date": "2026-05-12",
       "end_obs_date": "2026-09-22",
@@ -1026,7 +1026,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "沪铝期货",
-      "underlying_price": null,
+      "underlying_price": 23845,
       "establish_date": "2026-04-08",
       "start_obs_date": "2026-04-15",
       "end_obs_date": "2026-09-23",
@@ -1866,7 +1866,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-10-15",
       "start_obs_date": "2025-10-22",
       "end_obs_date": "2026-01-13",
@@ -1896,7 +1896,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "中证500",
-      "underlying_price": null,
+      "underlying_price": 7990.328,
       "establish_date": "2025-10-15",
       "start_obs_date": "2025-10-23",
       "end_obs_date": "2026-03-24",
@@ -1926,7 +1926,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-10-15",
       "start_obs_date": "2025-10-22",
       "end_obs_date": "2026-04-14",
@@ -1956,7 +1956,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-10-15",
       "start_obs_date": "2025-10-23",
       "end_obs_date": "2026-03-24",
@@ -2076,7 +2076,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-08-07",
       "start_obs_date": "2025-08-14",
       "end_obs_date": "2026-01-05",
@@ -2196,7 +2196,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-07-22",
       "start_obs_date": "2025-07-30",
       "end_obs_date": "2025-12-23",
@@ -2406,7 +2406,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-07-08",
       "start_obs_date": "2025-07-16",
       "end_obs_date": "2025-09-30",
@@ -2856,7 +2856,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-04-23",
       "start_obs_date": "2025-05-07",
       "end_obs_date": "2025-10-22",
@@ -2916,7 +2916,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-04-18",
       "start_obs_date": "2025-04-28",
       "end_obs_date": "2025-10-16",
@@ -3036,7 +3036,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-04-10",
       "start_obs_date": "2025-04-18",
       "end_obs_date": "2025-09-22",
@@ -3066,7 +3066,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-04-10",
       "start_obs_date": "2025-04-18",
       "end_obs_date": "2025-07-22",
@@ -3126,7 +3126,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-04-09",
       "start_obs_date": "2025-04-17",
       "end_obs_date": "2025-07-22",
@@ -3216,7 +3216,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-03-19",
       "start_obs_date": null,
       "end_obs_date": null,
@@ -3246,7 +3246,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-03-10",
       "start_obs_date": null,
       "end_obs_date": null,
@@ -3276,7 +3276,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-02-21",
       "start_obs_date": null,
       "end_obs_date": null,
@@ -3306,7 +3306,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-02-11",
       "start_obs_date": null,
       "end_obs_date": null,
@@ -3336,7 +3336,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-02-11",
       "start_obs_date": null,
       "end_obs_date": null,
@@ -3366,7 +3366,7 @@
       "product_type_raw": "固收+单鲨",
       "product_type": "single_shark",
       "underlying": "黄金",
-      "underlying_price": null,
+      "underlying_price": 940.72,
       "establish_date": "2025-01-16",
       "start_obs_date": null,
       "end_obs_date": null,
@@ -3408,26 +3408,14 @@
       "code": "000300",
       "market": "cn_index"
     },
-    "白银期货（交易代码：AG2702）": {
+    "白银2702": {
       "code": "AG2702"
     },
-    "中证1000指数（代码：000852.SH）": {
-      "code": "000852"
-    },
-    "科创50ETF（交易代码：588000.SH）": {
+    "科创50": {
       "code": "588000"
     },
-    "SGE黄金9999（交易代码：AU9999.SGE）": {
-      "code": "AU9999"
-    },
-    "创业板ETF（交易代码：159915.SZ）": {
+    "创业板": {
       "code": "159915"
-    },
-    "科创50（588000.SH）": {
-      "code": "588000"
-    },
-    "黄金AU9999": {
-      "code": "AU9999"
     },
     "碳酸锂期货": {
       "code": "LC2701"
@@ -3435,41 +3423,26 @@
     "沪铜期货": {
       "code": "CU2702"
     },
-    "沪银期货（AG2612.SHF）": {
+    "白银2612": {
       "code": "AG2612"
     },
     "沪铝期货": {
       "code": "AL2611"
     },
-    "黄金（AU9999.SGE）": {
-      "code": "AU9999"
-    },
-    "中证1000指数（000852.SH）": {
-      "code": "000852"
-    },
-    "沪铜期货（CU2611.SHF）": {
+    "沪铜2611": {
       "code": "CU2611"
     },
-    "沪铜期货（CU2608.SHF）": {
+    "沪铜2608": {
       "code": "CU2608"
     },
-    "沪铝期货（AL2608.SHF）": {
+    "沪铝2608": {
       "code": "AL2608"
     },
-    "沪铜2608（交易代码：CU2608.SHF）": {
-      "code": "CU2608"
-    },
-    "沪铜期货CU2606": {
+    "沪铜期货2606": {
       "code": "CU2606"
     },
-    "黄金9999": {
-      "code": "AU9999"
-    },
-    "白银期货AG2604": {
+    "白银期货2604": {
       "code": "AG2604"
-    },
-    "中证1000指数": {
-      "code": "000852"
     }
   }
 }
