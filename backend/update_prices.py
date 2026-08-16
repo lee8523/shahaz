@@ -251,9 +251,14 @@ def refresh_initial_prices(products_data):
     for prod in products:
         code = prod.get("product_code")
         underlying = prod.get("underlying")
-        start_date = prod.get("start_obs_date") or prod.get("establish_date")
+        start_date = prod.get("start_obs_date")
         
         if not code or not underlying or not start_date:
+            continue
+        
+        # 期初观察日在未来则跳过
+        if start_date > datetime.now().strftime("%Y-%m-%d"):
+            print(f"\n  [{code}] 期初观察日 {start_date} 未到，跳过")
             continue
         
         # 已有期初价则跳过
