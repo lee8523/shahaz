@@ -24,7 +24,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install akshare
+        run: pip install requests
 
       - name: Run price update script
         run: python backend/update_prices.py
