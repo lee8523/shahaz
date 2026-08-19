@@ -53,7 +53,7 @@
 <body>
 
 <header class="header">
-  <h1 class="logo">场外挂钩结构化产品列表公示</h1>
+  <h1 class="logo">固收+期权产品模拟</h1>
   <div class="header-right">
     <span class="update-time" id="updateTime">--</span>
   </div>
@@ -197,7 +197,7 @@
         ...prod,
         underlying_display: formatUnderlying(prod.underlying),
         initial_price: initialPrices[prod.product_code]?.price || null,
-        estimated_return: getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price),
+        estimated_return: matured ? '--' : getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price),
         days_to_maturity: calcDaysToMaturity(prod.contract_maturity_date),
         status: statusObj.text,
         status_class: statusObj.className,
