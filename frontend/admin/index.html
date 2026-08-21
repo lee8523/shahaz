@@ -135,6 +135,7 @@
         <th>期末观察日</th>
         <th>估算基准</th>
         <th>最终基准</th>
+        <th>实际收益</th>
         <th>产品状态</th>
         <th>操作</th>
       </tr>
@@ -737,6 +738,7 @@
         <td>${prod.end_obs_date || '--'}</td>
         <td>${getEstimatedDisplay(prod, initialPrices[prod.product_code]?.price)}</td>
         <td>${formatPercentShow(prod.performance_base)}</td>
+        <td>${formatPercentShow(prod.actual_final_return)}</td>
         <td><span class="${statusObj.className}">${statusObj.text}</span></td>
         <td>
           <button class="btn view-btn" data-code="${prod.product_code}">详情</button>

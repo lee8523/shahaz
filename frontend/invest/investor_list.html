@@ -104,10 +104,11 @@
       <th onclick="sortTable('contract_maturity_date')">到期日</th>
       <th onclick="sortTable('estimated_return')">估算基准</th>
       <th onclick="sortTable('performance_base')">最终基准</th>
+      <th onclick="sortTable('actual_final_return')">实际收益</th>
       <th onclick="sortTable('days_to_maturity')">剩余天数</th>
       <th onclick="sortTable('status')">状态</th>
     </tr></thead>
-    <tbody id="tableBody"><tr><td colspan="12" class="empty-msg">加载中...</td></tr></tbody>
+    <tbody id="tableBody"><tr><td colspan="13" class="empty-msg">加载中...</td></tr></tbody>
   </table>
 </section>
 
@@ -252,6 +253,7 @@
         <td>${p.contract_maturity_date || '--'}</td>
         <td class="${estClass}">${estReturn}</td>
         <td>${formatPercentShow(p.performance_base)}</td>
+        <td>${formatPercentShow(p.actual_final_return)}</td>
         <td>${p.days_to_maturity || '--'}</td>
         <td><span class="tag ${p.status_class}">${p.status}</span></td>
       </tr>`;
