@@ -121,36 +121,6 @@
    }
   },
   {
-   "product_code": "SCS929",
-   "product_name": "华夏资本龙跃慧盈201号",
-   "product_type_raw": "固收+单鲨",
-   "product_type": "single_shark",
-   "underlying": "黄金",
-   "underlying_price": 940.72,
-   "establish_date": "2026-08-06",
-   "start_obs_date": null,
-   "end_obs_date": null,
-   "early_maturity_date": null,
-   "contract_maturity_date": "2027-02-01",
-   "performance_base": null,
-   "estimated_base": null,
-   "actual_final_return": null,
-   "structure_params": {
-    "strike_pct": 1.02,
-    "up_barrier_pct": 1.1,
-    "down_barrier_pct": null,
-    "participation_rate": 0.375,
-    "min_return_pct": 0.015,
-    "knockout_base_pct": 0.02,
-    "knock_out_obs_dates": [],
-    "obs_manual_confirm": false
-   },
-   "event_record": {
-    "is_early_terminate": false,
-    "knockout_occur_date": null
-   }
-  },
-  {
    "product_code": "SCS711",
    "product_name": "华夏资本龙跃慧盈200号",
    "product_type_raw": "固收+单鲨",
