@@ -744,6 +744,7 @@
           <button class="btn view-btn" data-code="${prod.product_code}">详情</button>
           <button class="btn edit-btn" data-code="${prod.product_code}">编辑</button>
           <button class="btn link-btn" data-code="${prod.product_code}" style="background:#f6ffed;color:#00b42a">生成链接</button>
+          <button class="btn del-btn" data-code="${prod.product_code}" style="background:#fff2f0;color:#f53f3f;margin-left:4px">删除</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -779,6 +780,22 @@
         }).catch(() => {
           // 剪贴板失败不影响使用
         });
+      }
+    });
+
+    // 删除产品
+    document.querySelectorAll('.del-btn').forEach(btn => {
+      btn.onclick = async () => {
+        const code = btn.dataset.code;
+        const prod = productList.find(p => p.product_code === code);
+        if (!prod) return;
+        if (!confirm(`确认删除产品「${prod.product_name}」（${code}）？\n此操作不可撤销，删除后需手动保存到服务器。`)) return;
+        productList = productList.filter(p => p.product_code !== code);
+        renderTable();
+        const ok = await saveToServer();
+        if (ok) {
+          alert(`已删除「${prod.product_name}」`);
+        }
       }
     });
   }
