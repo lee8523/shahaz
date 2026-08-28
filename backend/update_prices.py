@@ -115,6 +115,73 @@ def refresh_initial_prices(products_data):
     return initial_prices
 
 
+def detect_knockout(products_data):
+    """单鲨结构敲出检测：历史收盘价触及敲出价则锁定敲出基准"""
+    print("\n[3/3] 单鲨敲出检测...")
+    products = products_data.get("products", [])
+    underlyings = products_data.get("underlyings", {})
+
+    initial_path = os.path.join(SCRIPT_DIR, "initial_prices.json")
+    if not os.path.exists(initial_path):
+        print("  无期初价文件，跳过")
+        return
+    with open(initial_path, "r", encoding="utf-8") as f:
+        initial_prices = json.load(f)
+
+    changed = 0
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    for prod in products:
+        if prod.get("product_type") != "single_shark":
+            continue
+        code = prod.get("product_code")
+        # 已敲出跳过
+        if prod.get("event_record", {}).get("knockout_occur_date"):
+            continue
+        start_date = prod.get("start_obs_date")
+        underlying = prod.get("underlying")
+        if not code or not start_date or not underlying:
+            continue
+        init = initial_prices.get(code, {}).get("price")
+        if not init:
+            continue
+        up_barrier = (prod.get("structure_params") or {}).get("up_barrier_pct")
+        if not up_barrier:
+            continue
+        underlying_code = underlyings.get(underlying, {}).get("code")
+        if not underlying_code:
+            continue
+
+        # 期初观察日未到，不检测
+        if start_date > today:
+            continue
+
+        knockout_price = init * up_barrier
+        klines = md.fetch_kline(underlying_code, start_date, today)
+        if not klines:
+            print(f"  ⚠ [{code}] {underlying} K线获取失败，敲出检测跳过")
+            continue
+
+        # 找首个收盘价触及敲出价的日期
+        hit_date = None
+        for date in sorted(klines.keys()):
+            if klines[date] >= knockout_price:
+                hit_date = date
+                break
+        if hit_date:
+            prod.setdefault("event_record", {})["knockout_occur_date"] = hit_date
+            print(f"  [{code}] {underlying} 敲出日 {hit_date}（收盘 {klines[hit_date]} >= 敲出价 {knockout_price:.2f}）")
+            changed += 1
+
+    if changed:
+        products_path = os.path.join(SCRIPT_DIR, "products.json")
+        with open(products_path, "w", encoding="utf-8") as f:
+            json.dump(products_data, f, ensure_ascii=False, indent=1)
+        print(f"\n已回写 products.json，新增敲出 {changed} 个")
+    else:
+        print("\n无新增敲出产品")
+
+
 def main():
     print("=" * 50)
     print(f"  价格刷新脚本 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -126,6 +193,7 @@ def main():
 
     refresh_current_prices(products_data)
     refresh_initial_prices(products_data)
+    detect_knockout(products_data)
 
     print("\n完成!")
 

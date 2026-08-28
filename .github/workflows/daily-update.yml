@@ -34,6 +34,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add backend/prices.json backend/initial_prices.json
+          git add backend/prices.json backend/initial_prices.json backend/products.json
           git diff --staged --quiet || git commit -m "chore: daily price update $(date +%Y-%m-%d)"
           git push

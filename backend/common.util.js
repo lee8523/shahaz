@@ -257,7 +257,10 @@ export function getEstimatedDisplay(prod, initialPrice) {
   
   switch (prod.product_type) {
     case "single_shark":
-      if (sRatio >= BU) {
+      // 已敲出：锁定敲出基准，不再随价格波动
+      if (prod.event_record?.knockout_occur_date) {
+        result = RKO;
+      } else if (sRatio >= BU) {
         result = RKO;
       } else if (sRatio >= K && sRatio < BU) {
         result = Rmin + P * (sRatio - K);
