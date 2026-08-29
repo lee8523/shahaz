@@ -147,7 +147,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-06-22"
    }
   },
   {
@@ -177,7 +177,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-06-25"
    }
   },
   {
@@ -327,7 +327,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-05-11"
    }
   },
   {
