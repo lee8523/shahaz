@@ -314,6 +314,7 @@
   let productsSha = ''; // 用于GitHub API更新
   const today = new Date().toISOString().split('T')[0];
   let pendingRows = []; // 暂存待处理的Excel行
+  let editingCode = null; // 当前弹窗打开的产品代码
 
   // ========== GitHub Token 配置 ==========
   const GITHUB_REPO = 'lee8523/shahaz';
@@ -579,12 +580,18 @@
     await saveToServer();
   }
   
-  // 弹窗让用户补全合约代码
+  // 弹窗让用户补全合约代码（独立动态弹窗，不破坏导入结果弹窗结构）
   function promptUnderlyingConfirm(confirmList) {
     return new Promise((resolve) => {
       const uniqueRawNames = [...new Set(confirmList.map(c => c.rawName))];
-      let html = '<p style="margin-bottom:12px;color:#e67e22">以下标的需要补全合约代码：</p>';
-      
+      const mask = document.createElement('div');
+      mask.className = 'modal-mask';
+      mask.style.display = 'flex';
+      const box = document.createElement('div');
+      box.className = 'modal-box';
+      box.style.width = '520px';
+
+      let html = '<div class="modal-title">补全合约代码</div><p style="margin-bottom:12px;color:#e67e22">以下标的需要补全合约代码：</p>';
       uniqueRawNames.forEach(rawName => {
         const item = confirmList.find(c => c.rawName === rawName);
         html += `
@@ -592,41 +599,32 @@
             <span style="min-width:200px">${rawName}</span>
             <span>→</span>
             <span>${item.variety}</span>
-            <input type="text" class="confirm-contract" data-raw="${rawName}" 
+            <input type="text" class="confirm-contract" data-raw="${rawName}"
                    placeholder="合约代码（如2604）" style="width:120px">
           </div>
         `;
       });
-      
       html += `
         <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
-          <button id="confirmCancel" class="btn-secondary">取消</button>
-          <button id="confirmOk" class="btn-primary">确认</button>
+          <button id="confirmCancel" class="btn" style="background:#f0f2f5">取消</button>
+          <button id="confirmOk" class="btn btn-primary">确认</button>
         </div>
       `;
-      
-      // 显示弹窗
-      const modal = document.getElementById('resultModal');
-      const content = modal.querySelector('.modal-content');
-      content.innerHTML = `<h3>补全合约代码</h3>${html}`;
-      modal.style.display = 'flex';
-      
-      document.getElementById('confirmCancel').onclick = () => {
-        modal.style.display = 'none';
+      box.innerHTML = html;
+      mask.appendChild(box);
+      document.body.appendChild(mask);
+
+      mask.querySelector('#confirmCancel').onclick = () => {
+        mask.remove();
         resolve(null);
       };
-      
-      document.getElementById('confirmOk').onclick = () => {
-        const inputs = modal.querySelectorAll('.confirm-contract');
+      mask.querySelector('#confirmOk').onclick = () => {
         const result = {};
-        inputs.forEach(input => {
-          const raw = input.dataset.raw;
+        mask.querySelectorAll('.confirm-contract').forEach(input => {
           const code = input.value.trim();
-          if (code) {
-            result[raw] = code;
-          }
+          if (code) result[input.dataset.raw] = code;
         });
-        modal.style.display = 'none';
+        mask.remove();
         resolve(result);
       };
     });
@@ -802,6 +800,7 @@
 
   // 填充弹窗数据
   function fillModal(prod) {
+    editingCode = prod.product_code;
     document.getElementById('inp_code').value = prod.product_code;
     document.getElementById('inp_name').value = prod.product_name;
     document.getElementById('inp_type').value = prod.product_type;
@@ -845,10 +844,41 @@
     document.getElementById('detailModal').style.display = 'none';
   }
 
-  // 保存逻辑简写
-  document.getElementById('saveBtn').onclick = () => {
-    alert('保存成功（业务逻辑对接excel.parser.js即可）');
+  // 保存编辑：写回产品对象并提交到 GitHub
+  document.getElementById('saveBtn').onclick = async () => {
+    const prod = productList.find(p => p.product_code === editingCode);
+    if (!prod) return;
+    const val = id => document.getElementById(id).value.trim();
+    const pct = id => {
+      const v = val(id);
+      return v === '' ? null : parseFloat(v) / 100;
+    };
+    const dateOrNull = id => val(id) || null;
+
+    prod.product_name = val('inp_name');
+    prod.product_type = val('inp_type');
+    prod.underlying = val('inp_underlying');
+    prod.establish_date = dateOrNull('inp_establish');
+    prod.contract_maturity_date = dateOrNull('inp_maturity');
+    prod.start_obs_date = dateOrNull('inp_start_obs');
+    prod.end_obs_date = dateOrNull('inp_end_obs');
+    prod.early_maturity_date = prod.product_type === 'single_shark' ? null : dateOrNull('inp_early_end');
+
+    const sp = prod.structure_params;
+    sp.strike_pct = pct('inp_strike');
+    sp.up_barrier_pct = pct('inp_up_barrier');
+    sp.down_barrier_pct = pct('inp_down_barrier');
+    sp.participation_rate = pct('inp_participation');
+    sp.min_return_pct = pct('inp_min_return');
+    sp.knockout_base_pct = pct('inp_knockout');
+
+    const act = val('inp_actual');
+    prod.actual_final_return = act === '' ? null : parseFloat(act) / 100;
+
     document.getElementById('detailModal').style.display = 'none';
+    renderTable();
+    const ok = await saveToServer();
+    alert(ok ? '已保存到 GitHub' : '保存失败，请检查 Token 或网络');
   }
 </script>
 </body>

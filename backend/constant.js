@@ -2,14 +2,16 @@
 export const PRODUCT_TYPE_MAP = {
   "固收+单鲨": "single_shark",
   "固收+二元": "binary",
-  "固收+三元": "three_element"
+  "固收+三元": "three_element",
+  "固收+双鲨": "double_shark"
 };
 
 // 内部编码 -> 前端中文展示
 export const TYPE_LABEL = {
   single_shark: "鲨鱼鳍",
   binary: "二元",
-  three_element: "三元"
+  three_element: "三元",
+  double_shark: "双鲨"
 };
 
 // 全部合法结构类型
