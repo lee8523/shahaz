@@ -186,9 +186,10 @@
     const today = new Date().toISOString().split('T')[0];
 
     displayList = productsData.products.map(prod => {
-      // 更新价格
+      // 更新价格（已过期末观察日的产品冻结现价，不再随行情刷新）
+      const ended = prod.end_obs_date && prod.end_obs_date < today;
       const code = getUnderlyingCode(prod.underlying);
-      if (code && prices[code]?.price) prod.underlying_price = prices[code].price;
+      if (!ended && code && prices[code]?.price) prod.underlying_price = prices[code].price;
       if (initialPrices[prod.product_code]?.price) prod.initial_price = initialPrices[prod.product_code].price;
       
       const statusObj = getProductStatusInfo(prod, today);

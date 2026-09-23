@@ -110,7 +110,9 @@
         }
 
         const code = getUnderlyingCode(product.underlying);
-        if (code && prices[code]?.price) {
+        // 已过期末观察日的产品冻结现价，不再随行情刷新
+        const ended = product.end_obs_date && product.end_obs_date < today;
+        if (!ended && code && prices[code]?.price) {
           product.underlying_price = prices[code].price;
         }
 
