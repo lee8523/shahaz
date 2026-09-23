@@ -34,9 +34,22 @@ def refresh_current_prices(products_data):
     failed = []
     seen_codes = set()  # 去重，同一 code 只请求一次
 
+    # 仅刷新仍有存续产品（未过期末观察日）的标的，已结束产品冻结现价
+    today = datetime.now().strftime("%Y-%m-%d")
+    active_codes = {
+        info.get("code")
+        for name, info in underlyings.items()
+        if info.get("code")
+        for p in products_data.get("products", [])
+        if p.get("underlying") == name and (not p.get("end_obs_date") or p.get("end_obs_date") >= today)
+    }
+
     for name, info in underlyings.items():
         code = info.get("code")
         if not code:
+            continue
+        if code not in active_codes:
+            print(f"\n  [{name}] {code} (无存续产品，跳过)")
             continue
         if code in seen_codes:
             print(f"\n  [{name}] {code} (已获取，跳过)")
@@ -62,7 +75,7 @@ def refresh_current_prices(products_data):
     print(f"\n已写入 prices.json，共 {len(prices)} 个标的")
 
     # 全部标的全失败才退出；部分失败只告警，不整次红
-    if failed and len(failed) >= len(seen_codes):
+    if seen_codes and failed and len(failed) >= len(seen_codes):
         print(f"\n!!! 全部标的获取失败: {', '.join(failed)}")
         sys.exit(1)
     if failed:
@@ -162,14 +175,18 @@ def detect_knockout(products_data):
             print(f"  ⚠ [{code}] {underlying} K线获取失败，敲出检测跳过")
             continue
 
-        # 找首个收盘价触及敲出价的日期
+        # 找首个收盘价触及敲出价的日期（必须不早于期初观察日；
+        # 新浪备源K线返回最近500根，包含期初日之前的数据，需过滤）
         hit_date = None
         for date in sorted(klines.keys()):
+            if date < start_date:
+                continue
             if klines[date] >= knockout_price:
                 hit_date = date
                 break
         if hit_date:
             prod.setdefault("event_record", {})["knockout_occur_date"] = hit_date
+            prod["underlying_price"] = klines[hit_date]  # 冻结为敲出日收盘价
             print(f"  [{code}] {underlying} 敲出日 {hit_date}（收盘 {klines[hit_date]} >= 敲出价 {knockout_price:.2f}）")
             changed += 1
 
@@ -245,6 +262,7 @@ def settle_final_base(products_data):
         else:
             base = rmin
         prod["performance_base"] = round(base, 6)
+        prod["underlying_price"] = price  # 冻结为期末观察日收盘价
         print(f"  [{code}] 期末 {price} / 期初 {init} = {s_ratio:.4f} → 基准 {base * 100:.4f}%")
         settled += 1
 
