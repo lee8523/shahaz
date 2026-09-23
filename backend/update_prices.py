@@ -117,7 +117,7 @@ def refresh_initial_prices(products_data):
 
 def detect_knockout(products_data):
     """单鲨结构敲出检测：历史收盘价触及敲出价则锁定敲出基准"""
-    print("\n[3/3] 单鲨敲出检测...")
+    print("\n[3/4] 单鲨敲出检测...")
     products = products_data.get("products", [])
     underlyings = products_data.get("underlyings", {})
 
@@ -182,6 +182,81 @@ def detect_knockout(products_data):
         print("\n无新增敲出产品")
 
 
+def settle_final_base(products_data):
+    """期末结算：期末观察日已过且未锁定最终基准的单鲨产品，按期末收盘价锁定计提基准
+    公式与 backend/product.calc.js 的 calcProductReturn 保持一致
+    """
+    print("\n[4/4] 期末结算...")
+    products = products_data.get("products", [])
+    underlyings = products_data.get("underlyings", {})
+
+    initial_path = os.path.join(SCRIPT_DIR, "initial_prices.json")
+    if not os.path.exists(initial_path):
+        print("  无期初价文件，跳过")
+        return
+    with open(initial_path, "r", encoding="utf-8") as f:
+        initial_prices = json.load(f)
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    settled = 0
+
+    for prod in products:
+        if prod.get("product_type") != "single_shark":
+            continue
+        if prod.get("performance_base") is not None:
+            continue
+        end_date = prod.get("end_obs_date")
+        if not end_date or end_date > today:
+            continue
+
+        code = prod.get("product_code")
+        params = prod.get("structure_params") or {}
+        rko = params.get("knockout_base_pct")
+        rmin = params.get("min_return_pct")
+        strike = params.get("strike_pct")
+        barrier = params.get("up_barrier_pct")
+        if rko is None or rmin is None or strike is None or barrier is None:
+            print(f"  ⚠ [{code}] 结构参数缺失，跳过")
+            continue
+
+        # 已敲出：直接锁定敲出基准
+        if prod.get("event_record", {}).get("knockout_occur_date"):
+            prod["performance_base"] = round(rko, 6)
+            print(f"  [{code}] 已敲出，锁定敲出基准 {rko * 100:.2f}%")
+            settled += 1
+            continue
+
+        init = initial_prices.get(code, {}).get("price")
+        underlying_code = underlyings.get(prod.get("underlying"), {}).get("code")
+        if not init or not underlying_code:
+            print(f"  ⚠ [{code}] 缺期初价或标的代码，跳过")
+            continue
+
+        price, actual_date = md.fetch_initial_price(underlying_code, end_date)
+        if not price or actual_date != end_date:
+            print(f"  ⚠ [{code}] 期末观察日 {end_date} 收盘价未获取到（实际 {actual_date}），下次再试")
+            continue
+
+        s_ratio = price / init
+        if s_ratio >= barrier:
+            base = rko
+        elif s_ratio >= strike:
+            base = rmin + (params.get("participation_rate") or 0) * (s_ratio - strike)
+        else:
+            base = rmin
+        prod["performance_base"] = round(base, 6)
+        print(f"  [{code}] 期末 {price} / 期初 {init} = {s_ratio:.4f} → 基准 {base * 100:.4f}%")
+        settled += 1
+
+    if settled:
+        products_path = os.path.join(SCRIPT_DIR, "products.json")
+        with open(products_path, "w", encoding="utf-8") as f:
+            json.dump(products_data, f, ensure_ascii=False, indent=1)
+        print(f"\n已回写 products.json，新增结算 {settled} 个")
+    else:
+        print("\n无新增结算产品")
+
+
 def main():
     print("=" * 50)
     print(f"  价格刷新脚本 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -194,6 +269,7 @@ def main():
     refresh_current_prices(products_data)
     refresh_initial_prices(products_data)
     detect_knockout(products_data)
+    settle_final_base(products_data)
 
     print("\n完成!")
 

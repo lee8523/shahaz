@@ -432,7 +432,7 @@
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0.0196,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -972,7 +972,7 @@
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0.013,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -1032,7 +1032,7 @@
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0.002096,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
