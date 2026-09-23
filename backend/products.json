@@ -516,13 +516,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "白银2612",
-   "underlying_price": 15754,
+   "underlying_price": 16165.0,
    "establish_date": "2026-05-27",
    "start_obs_date": "2026-06-03",
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0.01,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -696,13 +696,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 931.98,
    "establish_date": "2026-05-08",
    "start_obs_date": "2026-05-14",
    "end_obs_date": "2026-09-22",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-23",
-   "performance_base": null,
+   "performance_base": 0.012,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -726,13 +726,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "沪铝期货",
-   "underlying_price": 23845,
+   "underlying_price": 24240.0,
    "establish_date": "2026-04-29",
    "start_obs_date": "2026-05-12",
    "end_obs_date": "2026-09-22",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-23",
-   "performance_base": null,
+   "performance_base": 0.01,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -816,13 +816,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 934.0,
    "establish_date": "2026-04-21",
    "start_obs_date": "2026-04-30",
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0.013,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -876,13 +876,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 934.0,
    "establish_date": "2026-04-17",
    "start_obs_date": "2026-04-27",
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0.015,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -996,13 +996,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "沪铝期货",
-   "underlying_price": 23845,
+   "underlying_price": 24205.0,
    "establish_date": "2026-04-08",
    "start_obs_date": "2026-04-15",
    "end_obs_date": "2026-09-23",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-24",
-   "performance_base": null,
+   "performance_base": 0,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -1086,13 +1086,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 932.8,
    "establish_date": "2026-04-03",
    "start_obs_date": "2026-04-13",
    "end_obs_date": "2026-09-14",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-15",
-   "performance_base": null,
+   "performance_base": 0.01,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -1116,13 +1116,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "沪铜2611",
-   "underlying_price": null,
+   "underlying_price": 107340.0,
    "establish_date": "2026-04-08",
    "start_obs_date": "2026-04-15",
    "end_obs_date": "2026-09-14",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-15",
-   "performance_base": null,
+   "performance_base": 0.02449,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -1146,13 +1146,13 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 938.09,
    "establish_date": "2026-03-20",
    "start_obs_date": "2026-03-30",
    "end_obs_date": "2026-09-21",
    "early_maturity_date": null,
    "contract_maturity_date": "2026-09-22",
-   "performance_base": null,
+   "performance_base": 0.01,
    "estimated_base": null,
    "actual_final_return": null,
    "structure_params": {
@@ -1236,7 +1236,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "沪铜2608",
-   "underlying_price": null,
+   "underlying_price": 109800.0,
    "establish_date": "2026-03-10",
    "start_obs_date": "2026-03-17",
    "end_obs_date": "2026-06-23",
@@ -1257,7 +1257,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-08-17"
    }
   },
   {
@@ -1596,7 +1596,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 1025.02,
    "establish_date": "2025-11-06",
    "start_obs_date": "2025-11-17",
    "end_obs_date": "2026-02-06",
@@ -1617,7 +1617,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-01-13"
    }
   },
   {
@@ -1656,7 +1656,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "白银期货2604",
-   "underlying_price": null,
+   "underlying_price": 13270.0,
    "establish_date": "2025-10-24",
    "start_obs_date": "2025-11-04",
    "end_obs_date": "2026-01-23",
@@ -1677,7 +1677,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-12-01"
    }
   },
   {
@@ -1836,7 +1836,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 1087.81,
    "establish_date": "2025-10-15",
    "start_obs_date": "2025-10-22",
    "end_obs_date": "2026-01-13",
@@ -1857,7 +1857,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-01-21"
    }
   },
   {
@@ -1926,7 +1926,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 1023.71,
    "establish_date": "2025-10-15",
    "start_obs_date": "2025-10-23",
    "end_obs_date": "2026-03-24",
@@ -1947,7 +1947,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2026-01-12"
    }
   },
   {
@@ -2046,7 +2046,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 838.73,
    "establish_date": "2025-08-07",
    "start_obs_date": "2025-08-14",
    "end_obs_date": "2026-01-05",
@@ -2067,7 +2067,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-16"
    }
   },
   {
@@ -2076,7 +2076,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 838.73,
    "establish_date": "2025-08-07",
    "start_obs_date": "2025-08-14",
    "end_obs_date": "2026-02-06",
@@ -2097,7 +2097,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-16"
    }
   },
   {
@@ -2136,7 +2136,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 850.65,
    "establish_date": "2025-07-29",
    "start_obs_date": "2025-08-06",
    "end_obs_date": "2025-10-28",
@@ -2157,7 +2157,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-23"
    }
   },
   {
@@ -2166,7 +2166,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 832.0,
    "establish_date": "2025-07-22",
    "start_obs_date": "2025-07-30",
    "end_obs_date": "2025-12-23",
@@ -2187,7 +2187,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-09"
    }
   },
   {
@@ -2196,7 +2196,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 838.73,
    "establish_date": "2025-07-18",
    "start_obs_date": "2025-07-28",
    "end_obs_date": "2026-01-05",
@@ -2217,7 +2217,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-16"
    }
   },
   {
@@ -2226,7 +2226,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 838.73,
    "establish_date": "2025-07-17",
    "start_obs_date": "2025-07-24",
    "end_obs_date": "2026-01-16",
@@ -2247,7 +2247,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-16"
    }
   },
   {
@@ -2346,7 +2346,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 850.65,
    "establish_date": "2025-07-07",
    "start_obs_date": "2025-07-14",
    "end_obs_date": "2026-01-06",
@@ -2367,7 +2367,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-23"
    }
   },
   {
@@ -2376,7 +2376,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 832.0,
    "establish_date": "2025-07-08",
    "start_obs_date": "2025-07-16",
    "end_obs_date": "2025-09-30",
@@ -2397,7 +2397,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-09"
    }
   },
   {
@@ -2406,7 +2406,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 838.73,
    "establish_date": "2025-07-08",
    "start_obs_date": "2025-07-16",
    "end_obs_date": "2025-09-30",
@@ -2427,7 +2427,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-16"
    }
   },
   {
@@ -2436,7 +2436,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 838.73,
    "establish_date": "2025-07-08",
    "start_obs_date": "2025-07-16",
    "end_obs_date": "2025-09-30",
@@ -2457,7 +2457,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-16"
    }
   },
   {
@@ -2826,7 +2826,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 862.9,
    "establish_date": "2025-04-23",
    "start_obs_date": "2025-05-07",
    "end_obs_date": "2025-10-22",
@@ -2847,7 +2847,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-29"
    }
   },
   {
@@ -2886,7 +2886,7 @@
    "product_type_raw": "固收+单鲨",
    "product_type": "single_shark",
    "underlying": "黄金",
-   "underlying_price": 940.72,
+   "underlying_price": 871.86,
    "establish_date": "2025-04-18",
    "start_obs_date": "2025-04-28",
    "end_obs_date": "2025-10-16",
@@ -2907,7 +2907,7 @@
    },
    "event_record": {
     "is_early_terminate": false,
-    "knockout_occur_date": null
+    "knockout_occur_date": "2025-09-30"
    }
   },
   {
