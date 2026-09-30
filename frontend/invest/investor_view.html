@@ -13,38 +13,34 @@
       --r:8px;--sh:0 1px 3px rgba(0,0,0,.08);
     }
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--g50);color:var(--g800);line-height:1.6;min-height:100vh;padding:24px}
-    .wrap{max-width:900px;margin:0 auto}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--g50);color:var(--g800);line-height:1.6;min-height:100vh;padding:16px 20px}
+    .wrap{max-width:1000px;margin:0 auto}
     h1{display:none}
-    .card{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:28px;margin-bottom:20px}
-    .section{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--g100)}
-    .section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-    .section h3{font-size:15px;font-weight:600;color:var(--g700);margin-bottom:10px;padding-left:10px;border-left:3px solid var(--primary)}
-    .row{display:flex;padding:5px 0;font-size:13px}
-    .label{color:var(--g500);width:160px;flex-shrink:0}
+    .card{background:#fff;border-radius:var(--r);box-shadow:var(--sh);padding:18px 24px;margin-bottom:14px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px 36px}
+    .section{min-width:0}
+    .section h3{font-size:14px;font-weight:600;color:var(--g700);margin-bottom:6px;padding-left:10px;border-left:3px solid var(--primary)}
+    .row{display:flex;padding:3px 0;font-size:13px}
+    .label{color:var(--g500);width:140px;flex-shrink:0}
     .value{color:var(--g800);font-weight:500}
     .tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500}
     .tag-green{background:#dcfce7;color:#166534}
     .tag-red{background:#fee2e2;color:#991b1b}
     .tag-yellow{background:#fef3c7;color:#92400e}
     .tag-gray{background:var(--g100);color:var(--g500)}
-    .risk-tip{padding:14px 18px;background:#fff3e0;border-radius:var(--r);font-size:12px;color:#e65100}
+    .risk-tip{padding:12px 16px;background:#fff3e0;border-radius:var(--r);font-size:12px;color:#e65100}
+    @media(max-width:768px){.grid2{grid-template-columns:1fr}}
     
-    /* 障碍可视化样式 */
-    .barrier-viz{background:var(--g50);border-radius:var(--r);padding:24px;margin:16px 0}
-    .barrier-viz h4{font-size:14px;font-weight:600;color:var(--g700);margin-bottom:20px}
-    .barrier-track{position:relative;height:60px;margin:0 40px}
+    /* 障碍可视化样式（价格信息统一放轨道下方一行） */
+    .barrier-viz{grid-column:1/-1;background:var(--g50);border-radius:var(--r);padding:12px 24px 14px}
+    .barrier-viz h4{font-size:14px;font-weight:600;color:var(--g700);margin-bottom:12px}
+    .barrier-track{position:relative;height:56px;margin:0 40px}
     .barrier-track-bg{position:absolute;top:24px;left:0;right:0;height:8px;background:var(--g200);border-radius:4px}
     .barrier-track-fill{position:absolute;top:24px;left:0;height:8px;border-radius:4px;transition:width .5s}
     .barrier-line{position:absolute;top:12px;width:2px;height:40px;transform:translateX(-50%)}
-    .barrier-line::after{content:attr(data-label);position:absolute;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:var(--g500)}
-    /* 标签位置：上方 */
-    .barrier-line.label-top::after{bottom:calc(100% + 8px)}
-    /* 标签位置：下方 */
-    .barrier-line.label-bottom::after{top:calc(100% + 8px)}
     .barrier-current{position:absolute;top:18px;width:18px;height:18px;border-radius:50%;background:var(--primary);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15);transform:translateX(-50%);z-index:2;transition:left .5s}
-    .barrier-labels{display:flex;justify-content:space-between;margin-top:16px;font-size:12px;color:var(--g500)}
-    .barrier-labels strong{color:var(--g800)}
+    .barrier-labels{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:var(--g500)}
+    .barrier-labels strong{color:inherit}
   </style>
 </head>
 <body>
@@ -161,27 +157,24 @@
       const kiPct = calcPct(ki);
       const koPct = calcPct(ko);
       
-      // 确定标签位置（错开）
-      const kiLabel = kiPct < 50 ? 'label-top' : 'label-bottom';
-      const koLabel = koPct > 50 ? 'label-top' : 'label-bottom';
-      
       let fillColor = '#16a34a';
       if (currentPrice < ki) fillColor = '#dc2626';
       else if (currentPrice > ko) fillColor = '#2563eb';
-      
+
       vizHtml = `
         <div class="barrier-viz">
           <h4>障碍状态可视化</h4>
           <div class="barrier-track">
             <div class="barrier-track-bg"></div>
             <div class="barrier-track-fill" style="width:${cpPct}%;background:${fillColor}"></div>
-            <div class="barrier-line ${kiLabel}" style="left:${kiPct}%;background:#dc2626" data-label="敲入 ${ki.toFixed(0)}"></div>
-            <div class="barrier-line label-top" style="left:${ipPct}%;background:#94a3b8" data-label="期初 ${initPrice.toFixed(0)}"></div>
-            <div class="barrier-line ${koLabel}" style="left:${koPct}%;background:#16a34a" data-label="敲出 ${ko.toFixed(0)}"></div>
+            <div class="barrier-line" style="left:${kiPct}%;background:#dc2626"></div>
+            <div class="barrier-line" style="left:${ipPct}%;background:#2563eb"></div>
+            <div class="barrier-line" style="left:${koPct}%;background:#16a34a"></div>
             <div class="barrier-current" style="left:${cpPct}%"></div>
           </div>
           <div class="barrier-labels">
             <span style="color:#dc2626">敲入: ${ki.toFixed(2)}</span>
+            <span style="color:#2563eb">期初: <strong>${initPrice.toFixed(2)}</strong></span>
             <span>现价: <strong>${currentPrice.toFixed(2)}</strong></span>
             <span style="color:#16a34a">敲出: ${ko.toFixed(2)}</span>
           </div>
@@ -192,24 +185,21 @@
       const ub = initPrice * p.up_barrier_pct;
       const ubPct = calcPct(ub);
       
-      // 标签错开
-      const ubLabel = ubPct > 60 ? 'label-bottom' : 'label-top';
-      
       let fillColor = '#2563eb';
       if (currentPrice >= ub) fillColor = '#16a34a';
-      
+
       vizHtml = `
         <div class="barrier-viz">
           <h4>障碍状态可视化</h4>
           <div class="barrier-track">
             <div class="barrier-track-bg"></div>
             <div class="barrier-track-fill" style="width:${cpPct}%;background:${fillColor}"></div>
-            <div class="barrier-line label-bottom" style="left:${ipPct}%;background:#94a3b8" data-label="期初 ${initPrice.toFixed(0)}"></div>
-            <div class="barrier-line ${ubLabel}" style="left:${ubPct}%;background:#f59e0b" data-label="障碍 ${ub.toFixed(0)}"></div>
+            <div class="barrier-line" style="left:${ipPct}%;background:#2563eb"></div>
+            <div class="barrier-line" style="left:${ubPct}%;background:#f59e0b"></div>
             <div class="barrier-current" style="left:${cpPct}%"></div>
           </div>
           <div class="barrier-labels">
-            <span>期初: ${initPrice.toFixed(2)}</span>
+            <span style="color:#2563eb">期初: <strong>${initPrice.toFixed(2)}</strong></span>
             <span>现价: <strong>${currentPrice.toFixed(2)}</strong></span>
             <span style="color:#f59e0b">上涨障碍: ${ub.toFixed(2)}</span>
           </div>
@@ -220,23 +210,21 @@
       const ko = initPrice * p.up_barrier_pct;
       const koPct = calcPct(ko);
       
-      const koLabel = koPct > 60 ? 'label-bottom' : 'label-top';
-      
       let fillColor = '#2563eb';
       if (currentPrice >= ko) fillColor = '#16a34a';
-      
+
       vizHtml = `
         <div class="barrier-viz">
           <h4>障碍状态可视化</h4>
           <div class="barrier-track">
             <div class="barrier-track-bg"></div>
             <div class="barrier-track-fill" style="width:${cpPct}%;background:${fillColor}"></div>
-            <div class="barrier-line label-bottom" style="left:${ipPct}%;background:#94a3b8" data-label="期初 ${initPrice.toFixed(0)}"></div>
-            <div class="barrier-line ${koLabel}" style="left:${koPct}%;background:#16a34a" data-label="敲出 ${ko.toFixed(0)}"></div>
+            <div class="barrier-line" style="left:${ipPct}%;background:#2563eb"></div>
+            <div class="barrier-line" style="left:${koPct}%;background:#16a34a"></div>
             <div class="barrier-current" style="left:${cpPct}%"></div>
           </div>
           <div class="barrier-labels">
-            <span>期初: ${initPrice.toFixed(2)}</span>
+            <span style="color:#2563eb">期初: <strong>${initPrice.toFixed(2)}</strong></span>
             <span>现价: <strong>${currentPrice.toFixed(2)}</strong></span>
             <span style="color:#16a34a">敲出: ${ko.toFixed(2)}</span>
           </div>
@@ -258,7 +246,7 @@
     const upBarrierPrice = (initPrice && p.up_barrier_pct) ? (initPrice * p.up_barrier_pct).toFixed(2) : null;
     const downBarrierPrice = (initPrice && p.down_barrier_pct) ? (initPrice * p.down_barrier_pct).toFixed(2) : null;
     
-    let html = `
+    let html = `<div class="grid2">
       <div class="section">
         <h3>产品基础概况</h3>
         <div class="row"><span class="label">产品代码：</span><span class="value">${prod.product_code || '--'}</span></div>
@@ -289,8 +277,6 @@
         <div class="row"><span class="label">敲出基准：</span><span class="value">${p.knockout_base_pct ? (p.knockout_base_pct*100).toFixed(2)+'%' : '--'}</span></div>
       </div>
 
-      ${renderBarrierViz(prod)}
-
       <div class="section">
         <h3>年化收益台账</h3>
     `;
@@ -304,6 +290,9 @@
         <div class="row"><span class="label">最终基准：</span><span class="value">${formatPercentShow(prod.performance_base)}</span></div>
         <div class="row"><span class="label">实际收益：</span><span class="value">${formatPercentShow(prod.actual_final_return)}</span></div>
       </div>
+
+      ${renderBarrierViz(prod)}
+    </div>
     `;
 
     card.innerHTML = html;
