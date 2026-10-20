@@ -312,7 +312,7 @@
   let productsData = { products: [], underlyings: {} }; // 完整JSON数据
   let initialPrices = {}; // 期初价格
   let productsSha = ''; // 用于GitHub API更新
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
   let pendingRows = []; // 暂存待处理的Excel行
   let editingCode = null; // 当前弹窗打开的产品代码
 

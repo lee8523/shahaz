@@ -75,7 +75,7 @@
   let initialPrices = {};
   let product = {};
   
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
 
   // 获取标的akshare代码
   function getUnderlyingCode(name) {

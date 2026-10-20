@@ -183,7 +183,7 @@
     const underlying = document.getElementById('filterUnderlying').value;
     const maturedFilter = document.getElementById('filterMatured').value;
     const search = document.getElementById('filterSearch').value.toLowerCase();
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
 
     displayList = productsData.products.map(prod => {
       // 更新价格（已过期末观察日的产品冻结现价，不再随行情刷新）
@@ -220,7 +220,7 @@
 
   // 更新统计
   function updateStats() {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
     const all = productsData.products;
     const total = all.length;
     const matured = all.filter(p => isProductMatured(p, today)).length;

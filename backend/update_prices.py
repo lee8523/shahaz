@@ -95,6 +95,7 @@ def refresh_initial_prices(products_data):
     else:
         initial_prices = {}
 
+    today = datetime.now().strftime("%Y-%m-%d")
     for prod in products:
         code = prod.get("product_code")
         underlying = prod.get("underlying")
@@ -102,7 +103,11 @@ def refresh_initial_prices(products_data):
 
         if not code or not underlying or not start_date:
             continue
-        if start_date > datetime.now().strftime("%Y-%m-%d"):
+        # 已到期/已结算：静默跳过，避免日志刷屏
+        end_date = prod.get("end_obs_date") or prod.get("maturity_date")
+        if (end_date and end_date < today) or prod.get("performance_base") is not None:
+            continue
+        if start_date > today:
             print(f"\n  [{code}] 期初观察日 {start_date} 未到，跳过")
             continue
         if code in initial_prices:
